@@ -11,7 +11,7 @@ body {
 /* Шапка с фоновым изображением */
 .hero {
     background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
-    color: white;
+    color: black;
     padding: 4rem 1rem;
     text-align: center;
 }
