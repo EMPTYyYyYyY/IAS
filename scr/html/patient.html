@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель пациента</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header>
+        <h1>Панель пациента</h1>
+        <nav>
+            <a href="index.html">На главную</a>
+            <a href="#measurements">Мои измерения</a>
+            <a href="#messages">Сообщения</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section id="measurements">
+            <h2>Мои измерения</h2>
+            <div class="measurement-list">
+                <div class="measurement">
+                    <p><strong>Дата:</strong> 10.10.2023</p>
+                    <p><strong>Давление:</strong> 120/80</p>
+                    <p><strong>Пульс:</strong> 70</p>
+                </div>
+                <div class="measurement">
+                    <p><strong>Дата:</strong> 11.10.2023</p>
+                    <p><strong>Давление:</strong> 130/85</p>
+                    <p><strong>Пульс:</strong> 75</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="messages">
+            <h2>Сообщения</h2>
+            <div class="message-list">
+                <div class="message">
+                    <p><strong>Доктор:</strong> Ваше давление в норме.</p>
+                    <button class="btn">Ответить</button>
+                </div>
+                <div class="message">
+                    <p><strong>Доктор:</strong> Не забудьте измерить давление завтра.</p>
+                    <button class="btn">Ответить</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2023 Медицинская платформа. Все права защищены.</p>
+    </footer>
+</body>
+</html>

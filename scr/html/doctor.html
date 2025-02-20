@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Панель врача</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header>
+        <h1>Добро пожаловать, доктор!</h1>
+        <nav>
+            <a href="#patients">Пациенты</a>
+            <a href="#messages">Сообщения</a>
+            <button id="logout">Выйти</button>
+        </nav>
+    </header>
+
+    <section id="patients-list" class="container">
+        <h2>Ваши пациенты</h2>
+        <div class="search-box">
+            <input type="text" id="search" placeholder="Поиск пациентов...">
+        </div>
+        <div id="patients-container" class="grid"></div>
+    </section>
+
+    <section id="patient-details" class="container hidden">
+        <h2>Карточка пациента</h2>
+        <div class="patient-info">
+            <div id="patient-chart" class="chart"></div>
+            <div class="patient-data">
+                <h3>Последние измерения</h3>
+                <ul id="measurements-list"></ul>
+            </div>
+        </div>
+        <button id="back-to-list">Назад к списку</button>
+    </section>
+
+    <script src="scripts/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
