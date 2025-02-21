@@ -175,6 +175,7 @@ footer {
     color: white;
     padding: 2rem 0;
     text-align: center;
+    flex-shrink: 0;
 }
 
 .footer-content {
@@ -278,4 +279,24 @@ footer {
 
 .forgot-password a:hover {
     text-decoration: underline;
+}
+
+/* Основной контейнер для прижатия футера */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Основной контент */
+.container {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
