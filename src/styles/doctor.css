@@ -1,42 +1,3 @@
-/* Общие стили для страницы врача */
-body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f0f2f5;
-    color: #333;
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-/* Шапка */
-.hero {
-    background: #2c3e50; /* Цвет фона вместо изображения */
-    color: white;
-    padding: 4rem 1rem;
-    text-align: center;
-}
-
-.hero-content h1 {
-    font-size: 3rem;
-    margin: 0;
-}
-
-.hero-content p {
-    font-size: 1.5rem;
-    margin-top: 1rem;
-}
-
-/* Основной контент */
-.container {
-    flex: 1;
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
 /* Форма авторизации */
 .login-form {
     background: white;
@@ -51,7 +12,6 @@ body {
 .login-form h2 {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
-    color: #333;
 }
 
 .form-group {
@@ -63,7 +23,6 @@ body {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
-    color: #555;
 }
 
 .form-group input {
@@ -72,8 +31,6 @@ body {
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 1rem;
-    color: #333;
-    transition: border-color 0.3s;
 }
 
 .form-group input:focus {
@@ -99,17 +56,35 @@ body {
 
 .forgot-password {
     margin-top: 1rem;
-    text-align: center;
 }
 
 .forgot-password a {
     color: #3498db;
     text-decoration: none;
-    font-size: 0.9rem;
 }
 
 .forgot-password a:hover {
     text-decoration: underline;
+}
+
+/* Основной контейнер для прижатия футера */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Основной контент */
+.container {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* Футер */
@@ -119,38 +94,4 @@ footer {
     padding: 2rem 0;
     text-align: center;
     flex-shrink: 0;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.footer-section {
-    margin: 1rem;
-}
-
-.footer-section h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.footer-section a {
-    color: white;
-    text-decoration: none;
-    margin: 0 0.5rem;
-    font-size: 1.2rem;
-}
-
-.footer-section a:hover {
-    color: #3498db;
-}
-
-.footer-bottom {
-    margin-top: 2rem;
-    border-top: 1px solid #444;
-    padding-top: 1rem;
 }
