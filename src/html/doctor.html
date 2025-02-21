@@ -2,40 +2,61 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Панель врача</title>
-    <link rel="stylesheet" href="styles/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация врача</title>
+    <link rel="stylesheet" href="https://emptyyyyyyy.github.io/IAS/src/styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Добро пожаловать, доктор!</h1>
-        <nav>
-            <a href="#patients">Пациенты</a>
-            <a href="#messages">Сообщения</a>
-            <button id="logout">Выйти</button>
-        </nav>
+    <!-- Шапка с фоновым изображением -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Авторизация врача</h1>
+            <p>Войдите в систему, чтобы получить доступ к данным пациентов</p>
+        </div>
     </header>
 
-    <section id="patients-list" class="container">
-        <h2>Ваши пациенты</h2>
-        <div class="search-box">
-            <input type="text" id="search" placeholder="Поиск пациентов...">
-        </div>
-        <div id="patients-container" class="grid"></div>
-    </section>
+    <!-- Основной контент -->
+    <main class="container">
+        <!-- Форма авторизации -->
+        <section class="login-form">
+            <h2>Введите ваши данные</h2>
+            <form>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Введите ваш email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="password" placeholder="Введите ваш пароль" required>
+                </div>
+                <button type="submit" class="btn">Войти</button>
+            </form>
+            <div class="forgot-password">
+                <a href="#">Забыли пароль?</a>
+            </div>
+        </section>
+    </main>
 
-    <section id="patient-details" class="container hidden">
-        <h2>Карточка пациента</h2>
-        <div class="patient-info">
-            <div id="patient-chart" class="chart"></div>
-            <div class="patient-data">
-                <h3>Последние измерения</h3>
-                <ul id="measurements-list"></ul>
+    <!-- Футер -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p>Email: support@medplatform.com</p>
+                <p>Телефон: +7 (123) 456-78-90</p>
+            </div>
+            <div class="footer-section">
+                <h3>Социальные сети</h3>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
-        <button id="back-to-list">Назад к списку</button>
-    </section>
-
-    <script src="scripts/app.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <div class="footer-bottom">
+            <p>© 2023 Медицинская платформа. Все права защищены.</p>
+        </div>
+    </footer>
 </body>
 </html>
