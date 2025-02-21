@@ -226,6 +226,7 @@ footer {
 .login-form h2 {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
+    color: #333;
 }
 
 .form-group {
@@ -237,6 +238,7 @@ footer {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
+    color: #555;
 }
 
 .form-group input {
@@ -245,6 +247,8 @@ footer {
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s;
 }
 
 .form-group input:focus {
@@ -270,11 +274,13 @@ footer {
 
 .forgot-password {
     margin-top: 1rem;
+    text-align: center;
 }
 
 .forgot-password a {
     color: #3498db;
     text-decoration: none;
+    font-size: 0.9rem;
 }
 
 .forgot-password a:hover {
