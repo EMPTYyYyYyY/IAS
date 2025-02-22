@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Личный кабинет пациента</title>
+  <link rel="stylesheet" href="styles/patient-dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="scripts/patient-dashboard.js" defer></script>
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Шапка -->
+    <header class="header">
+      <img src="logo.png" alt="Логотип" class="logo">
+      <div class="user-info">
+        <span class="username">Иван Иванов</span>
+        <button class="logout-button">
+          <img src="icons/logout.svg" alt="Выйти" class="logout-icon">
+        </button>
+      </div>
+    </header>
+
+    <!-- Основной контент -->
+    <div class="content">
+      <!-- Боковое меню -->
+      <aside class="sidebar">
+        <nav>
+          <ul>
+            <li><a href="#" class="active"><img src="icons/home.svg" alt="Главная"> Главная</a></li>
+            <li><a href="#"><img src="icons/chart.svg" alt="Графики"> Графики</a></li>
+            <li><a href="#"><img src="icons/calendar.svg" alt="История"> История</a></li>
+            <li><a href="#"><img src="icons/chat.svg" alt="Сообщения"> Сообщения</a></li>
+            <li><a href="#"><img src="icons/settings.svg" alt="Настройки"> Настройки</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Основная область -->
+      <main class="main">
+        <h1>Графики измерений</h1>
+        <div class="charts">
+          <div class="chart-container">
+            <canvas id="pressureChart"></canvas>
+          </div>
+          <div class="chart-container">
+            <canvas id="pulseChart"></canvas>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+/* Основные стили */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F9FAFB;
+    color: #1F2937;
+  }
+  
+  .dashboard {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  /* Шапка */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo {
+    height: 40px;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .username {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .logout-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .logout-icon {
+    height: 24px;
+    width: 24px;
+  }
+  
+  /* Основной контент */
+  .content {
+    display: flex;
+    flex: 1;
+  }
+  
+  /* Боковое меню */
+  .sidebar {
+    width: 240px;
+    background-color: #FFFFFF;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+  }
+  
+  .sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar nav ul li {
+    margin-bottom: 8px;
+  }
+  
+  .sidebar nav ul li a {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    text-decoration: none;
+    color: #1F2937;
+    border-radius: 4px;
+  }
+  
+  .sidebar nav ul li a:hover {
+    background-color: #E5E7EB;
+  }
+  
+  .sidebar nav ul li a.active {
+    background-color: #4F46E5;
+    color: #FFFFFF;
+  }
+  
+  .sidebar nav ul li a img {
+    height: 20px;
+    width: 20px;
+    margin-right: 8px;
+  }
+  
+  /* Основная область */
+  .main {
+    flex: 1;
+    padding: 24px;
+  }
+  
+  .main h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  
+  .charts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  
+  .chart-container {
+    background-color: #FFFFFF;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
