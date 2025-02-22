@@ -3,84 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Личный кабинет врача</title>
+    <title>Кабинет врача</title>
     <link rel="stylesheet" href="https://emptyyyyyyy.github.io/IAS/src/styles/doctor-dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <!-- Шапка -->
     <header>
-        <div class="logo">
-            <h1>Медицинская платформа</h1>
-        </div>
-        <div class="user-info">
-            <span>Доктор Иванов</span>
-            <button id="logout">Выйти</button>
+        <div class="header-content">
+            <h1><i class="fas fa-hospital"></i> МедПлатформа</h1>
+            <div class="user-panel">
+                <span>Доктор Иванова</span>
+                <button id="logout"><i class="fas fa-sign-out-alt"></i></button>
+            </div>
         </div>
     </header>
 
-    <!-- Основной контент -->
-    <div class="dashboard-container">
+    <!-- Основной контейнер -->
+    <div class="dashboard">
         <!-- Сайдбар -->
         <aside class="sidebar">
             <nav>
                 <ul>
                     <li><a href="#patients" class="active"><i class="fas fa-users"></i> Пациенты</a></li>
-                    <li><a href="#chat"><i class="fas fa-comments"></i> Чат</a></li>
+                    <li><a href="#chat"><i class="fas fa-comment-medical"></i> Чат</a></li>
                     <li><a href="#notifications"><i class="fas fa-bell"></i> Уведомления</a></li>
                 </ul>
             </nav>
         </aside>
 
-        <!-- Основная область -->
-        <!-- Основная область -->
-<main class="content">
-    <!-- Раздел "Пациенты" -->
-    <section id="patients" class="active">
-        <!-- ... существующий контент ... -->
-    </section>
+        <!-- Основной контент -->
+        <main class="content">
+            <!-- Секция пациентов -->
+            <section id="patients" class="active">
+                <h2><i class="fas fa-user-injured"></i> Мои пациенты</h2>
+                <div class="patient-grid"></div>
+            </section>
 
-    <!-- Раздел "Чат" -->
-    <section id="chat" class="hidden">
-        <h2>Чат с пациентом</h2>
-        <div class="chat-window">
-            <!-- Добавим пример сообщений -->
-            <div class="message patient">
-                <p>Добрый день, доктор! Сегодня давление 120/80.</p>
-                <span class="timestamp">10:00</span>
-            </div>
-            <div class="message doctor">
-                <p>Здравствуйте! Это хороший показатель.</p>
-                <span class="timestamp">10:05</span>
-            </div>
-        </div>
-        <div class="chat-input">
-            <textarea placeholder="Введите сообщение..."></textarea>
-            <button>Отправить</button>
-        </div>
-    </section>
+            <!-- Секция чата -->
+            <section id="chat" class="hidden">
+                <h2><i class="fas fa-comments"></i> Чат с пациентом</h2>
+                <div class="chat-container">
+                    <div class="chat-messages"></div>
+                    <div class="chat-input">
+                        <textarea placeholder="Введите сообщение..."></textarea>
+                        <button><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </section>
 
-    <!-- Раздел "Уведомления" -->
-    <section id="notifications" class="hidden">
-        <h2>Уведомления</h2>
-        <div class="notification-list">
-            <!-- Добавим пример уведомлений -->
-            <div class="notification">
-                <p>Новое измерение от пациента Иванов: 130/85</p>
-                <span class="timestamp">10:15</span>
-            </div>
-            <div class="notification">
-                <p>Пациент Петрова пропустил ежедневный замер</p>
-                <span class="timestamp">09:30</span>
-            </div>
-        </div>
-    </section>
-</main>
+            <!-- Секция уведомлений -->
+            <section id="notifications" class="hidden">
+                <h2><i class="fas fa-exclamation-circle"></i> Уведомления</h2>
+                <div class="notifications-list"></div>
+            </section>
+        </main>
     </div>
 
     <!-- Футер -->
     <footer>
-        <p>© 2023 Медицинская платформа. Все права защищены.</p>
+        <p>© 2023 Медицинская платформа. Все права защищены</p>
     </footer>
 
     <script src="https://emptyyyyyyy.github.io/IAS/src/scripts/doctor-dashboard.js"></script>
