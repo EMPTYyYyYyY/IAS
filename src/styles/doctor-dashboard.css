@@ -3,6 +3,9 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Занимаем всю высоту экрана */
     background: #f0f2f5;
     color: #333;
 }
@@ -228,4 +231,14 @@ header .user-info button:hover {
 .notification .timestamp {
     font-size: 0.8rem;
     color: #666;
+}
+
+.dashboard-container {
+    flex: 1; /* Растягиваем на всю доступную высоту */
+    display: flex;
+}
+
+.dashboard-container {
+    flex: 1; /* Растягиваем на всю доступную высоту */
+    display: flex;
 }
