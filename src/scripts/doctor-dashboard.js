@@ -1,7 +1,7 @@
 // Переключение между разделами
 document.querySelectorAll('.sidebar nav ul li a').forEach(link => {
     link.addEventListener('click', (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Отменяем стандартное поведение ссылки
 
         // Убираем активный класс у всех ссылок
         document.querySelectorAll('.sidebar nav ul li a').forEach(a => {
@@ -25,7 +25,7 @@ document.querySelectorAll('.sidebar nav ul li a').forEach(link => {
 // Выход из системы
 document.getElementById('logout').addEventListener('click', () => {
     localStorage.removeItem('token'); // Удаляем токен
-    window.location.href = 'https://emptyyyyyyy.github.io/IAS/src/html/doctor.html'; // Перенаправляем на страницу авторизации
+    window.location.href = '/doctor-login.html'; // Перенаправляем на страницу авторизации
 });
 
 // Генерация списка пациентов

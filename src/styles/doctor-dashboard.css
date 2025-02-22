@@ -102,6 +102,10 @@ header .user-info button:hover {
     display: block;
 }
 
+.content section.hidden {
+    display: none;
+}
+
 /* Список пациентов */
 .patient-list {
     display: flex;
