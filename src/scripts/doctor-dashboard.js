@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Инициализация
-    if (document.querySelector('.patient-grid')) {
-        generatePatients();
-    }
+    generatePatients();
     setupNavigation();
     setupLogout();
 
@@ -12,24 +10,29 @@ document.addEventListener('DOMContentLoaded', () => {
             { name: "Иванов Пётр", age: 45, diagnosis: "Гипертония", lastData: "130/85" },
             { name: "Смирнова Ольга", age: 34, diagnosis: "Сахарный диабет", lastData: "Глюкоза 6.8" },
             { name: "Петров Алексей", age: 58, diagnosis: "Аритмия", lastData: "Пульс 95" },
-            { name: "Козлова Анна", age: 29, diagnosis: "Беременность", lastData: "Срок 32 нед." }
+            { name: "Козлова Анна", age: 29, diagnosis: "Беременность", lastData: "Срок 32 нед." },
+            { name: "Федоров Николай", age: 47, diagnosis: "Ожирение", lastData: "Вес 98 кг" },
+            { name: "Михайлова Елена", age: 52, diagnosis: "Астма", lastData: "Сатурация 96%" }
         ];
 
         const grid = document.querySelector('.patient-grid');
         if (grid) {
             patients.forEach(patient => {
-                grid.innerHTML += `
-                    <div class="patient-card">
-                        <h3>${patient.name}</h3>
-                        <p>Возраст: ${patient.age}</p>
-                        <p>Диагноз: ${patient.diagnosis}</p>
-                        <p>Последние данные: ${patient.lastData}</p>
-                        <button class="details-btn">Подробнее <i class="fas fa-arrow-right"></i></button>
-                    </div>
+                const card = document.createElement('div');
+                card.classList.add('patient-card');
+
+                card.innerHTML = `
+                    <h3><i class="fas fa-user"></i> ${patient.name}</h3>
+                    <p><i class="fas fa-birthday-cake"></i> Возраст: ${patient.age}</p>
+                    <p><i class="fas fa-stethoscope"></i> Диагноз: ${patient.diagnosis}</p>
+                    <p><i class="fas fa-heartbeat"></i> Последние данные: ${patient.lastData}</p>
+                    <button class="details-btn">Подробнее <i class="fas fa-arrow-right"></i></button>
                 `;
+
+                grid.appendChild(card);
             });
         } else {
-            console.error('Элемент .patient-grid не найден в DOM.');
+            console.error('Элемент .patient-grid не найден.');
         }
     }
 
