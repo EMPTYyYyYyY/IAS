@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет врача</title>
+    <link rel="stylesheet" href="https://emptyyyyyyy.github.io/IAS/src/styles/doctor-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="logo">
+            <h1>Медицинская платформа</h1>
+        </div>
+        <div class="user-info">
+            <span>Доктор Иванов</span>
+            <button id="logout">Выйти</button>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <div class="dashboard-container">
+        <!-- Сайдбар -->
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="#patients" class="active"><i class="fas fa-users"></i> Пациенты</a></li>
+                    <li><a href="#chat"><i class="fas fa-comments"></i> Чат</a></li>
+                    <li><a href="#notifications"><i class="fas fa-bell"></i> Уведомления</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Основная область -->
+        <main class="content">
+            <!-- Раздел "Пациенты" -->
+            <section id="patients" class="active">
+                <h2>Пациенты</h2>
+                <div class="patient-list">
+                    <div class="patient-card">
+                        <h3>Иван Иванов</h3>
+                        <p>Возраст: 45</p>
+                        <p>Последнее измерение: 120/80, Пульс: 70</p>
+                        <button class="view-details">Подробнее</button>
+                    </div>
+                    <div class="patient-card">
+                        <h3>Мария Петрова</h3>
+                        <p>Возраст: 34</p>
+                        <p>Последнее измерение: 130/85, Пульс: 75</p>
+                        <button class="view-details">Подробнее</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Раздел "Чат" -->
+            <section id="chat" class="hidden">
+                <h2>Чат с пациентом</h2>
+                <div class="chat-window">
+                    <div class="message patient">
+                        <p>Добрый день, доктор!</p>
+                        <span class="timestamp">10:00</span>
+                    </div>
+                    <div class="message doctor">
+                        <p>Здравствуйте! Как ваше самочувствие?</p>
+                        <span class="timestamp">10:05</span>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <textarea placeholder="Введите сообщение..."></textarea>
+                    <button>Отправить</button>
+                </div>
+            </section>
+
+            <!-- Раздел "Уведомления" -->
+            <section id="notifications" class="hidden">
+                <h2>Уведомления</h2>
+                <div class="notification-list">
+                    <div class="notification">
+                        <p>У пациента Иванов критическое давление: 150/95.</p>
+                        <span class="timestamp">09:30</span>
+                    </div>
+                    <div class="notification">
+                        <p>Пациент Петрова не измерял давление сегодня.</p>
+                        <span class="timestamp">08:45</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://emptyyyyyyy.github.io/IAS/src/script/doctor-dashboard.js"></script>
+</body>
+</html>

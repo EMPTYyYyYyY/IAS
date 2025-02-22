@@ -1,0 +1,222 @@
+/* Общие стили */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f0f2f5;
+    color: #333;
+}
+
+header {
+    background: #2c3e50;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+header .user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+header .user-info span {
+    font-size: 1rem;
+}
+
+header .user-info button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+header .user-info button:hover {
+    background: #2980b9;
+}
+
+.dashboard-container {
+    display: flex;
+}
+
+/* Сайдбар */
+.sidebar {
+    width: 250px;
+    background: #34495e;
+    color: white;
+    padding: 1rem;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar nav ul li {
+    margin: 1rem 0;
+}
+
+.sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.sidebar nav ul li a:hover {
+    background: #2c3e50;
+}
+
+.sidebar nav ul li a.active {
+    background: #3498db;
+}
+
+/* Основная область */
+.content {
+    flex: 1;
+    padding: 2rem;
+}
+
+.content section {
+    display: none;
+}
+
+.content section.active {
+    display: block;
+}
+
+/* Список пациентов */
+.patient-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.patient-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.patient-card h3 {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.patient-card p {
+    margin: 0.5rem 0;
+    color: #666;
+}
+
+.patient-card button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.patient-card button:hover {
+    background: #2980b9;
+}
+
+/* Чат */
+.chat-window {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 300px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+}
+
+.message {
+    margin-bottom: 1rem;
+}
+
+.message p {
+    margin: 0;
+    padding: 0.5rem;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.message.patient p {
+    background: #e1f5fe;
+}
+
+.message.doctor p {
+    background: #f0f4c3;
+}
+
+.timestamp {
+    display: block;
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 0.25rem;
+}
+
+.chat-input {
+    display: flex;
+    gap: 1rem;
+}
+
+.chat-input textarea {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+}
+
+.chat-input button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.chat-input button:hover {
+    background: #2980b9;
+}
+
+/* Уведомления */
+.notification-list {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.notification {
+    margin-bottom: 1rem;
+}
+
+.notification p {
+    margin: 0;
+    color: #333;
+}
+
+.notification .timestamp {
+    font-size: 0.8rem;
+    color: #666;
+}
