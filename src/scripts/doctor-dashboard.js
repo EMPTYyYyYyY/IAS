@@ -64,3 +64,27 @@ function generatePatients() {
 document.addEventListener('DOMContentLoaded', () => {
     generatePatients();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Инициализация
+    generatePatients();
+    
+    // Обработчики для навигации
+    document.querySelectorAll('.sidebar nav a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Удаляем активный класс у всех элементов
+            document.querySelectorAll('.sidebar nav a').forEach(a => a.classList.remove('active'));
+            document.querySelectorAll('.content section').forEach(section => section.classList.remove('active'));
+            
+            // Добавляем активный класс
+            this.classList.add('active');
+            const targetSection = document.querySelector(this.getAttribute('href'));
+            targetSection.classList.add('active');
+        });
+    });
+
+    // Активная секция по умолчанию
+    document.querySelector('#patients').classList.add('active');
+});
