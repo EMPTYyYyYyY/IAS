@@ -242,3 +242,7 @@ header .user-info button:hover {
     flex: 1; /* Растягиваем на всю доступную высоту */
     display: flex;
 }
+
+footer {
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
