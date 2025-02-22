@@ -10,7 +10,7 @@ body {
 
 /* Шапка */
 .hero {
-    background: #2c3e50; /* Цвет фона как у футера */
+    background: linear-gradient(135deg, #2c3e50, #34495e);
     color: white; /* Белый текст */
     padding: 4rem 1rem;
     text-align: center;
@@ -26,6 +26,10 @@ body {
     font-size: 1.5rem;
     margin-top: 1rem;
     color: white; /* Белый текст */
+}
+
+.hero-content h1, .hero-content p {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* Контейнер */
