@@ -8,10 +8,10 @@ body {
     line-height: 1.6;
 }
 
-/* Шапка с фоновым изображением */
+/* Шапка */
 .hero {
-    background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
-    color: black;
+    background: #2c3e50; /* Цвет фона как у футера */
+    color: white; /* Белый текст */
     padding: 4rem 1rem;
     text-align: center;
 }
@@ -19,11 +19,13 @@ body {
 .hero-content h1 {
     font-size: 3rem;
     margin: 0;
+    color: white; /* Белый текст */
 }
 
 .hero-content p {
     font-size: 1.5rem;
     margin-top: 1rem;
+    color: white; /* Белый текст */
 }
 
 /* Контейнер */
