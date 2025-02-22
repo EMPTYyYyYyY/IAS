@@ -104,6 +104,9 @@ header .user-info button:hover {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    max-height: 600px; /* Ограничиваем высоту списка */
+    overflow-y: auto; /* Добавляем прокрутку */
+    padding-right: 0.5rem; /* Чтобы не заезжало на скролл */
 }
 
 .patient-card {
@@ -111,6 +114,12 @@ header .user-info button:hover {
     padding: 1rem;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.patient-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .patient-card h3 {
