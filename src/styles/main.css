@@ -212,6 +212,7 @@ footer {
     padding-top: 1rem;
 }
 
+
 /* Переворачивающиеся карточки */
 .features-grid {
     display: flex;
@@ -249,12 +250,13 @@ footer {
     height: 100%;
     backface-visibility: hidden;
     border-radius: 10px;
-    padding: 1rem;
+    padding: 1.5rem; /* Увеличили отступы */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background: white;
+    box-sizing: border-box; /* Учитываем padding в размерах */
 }
 
 .flip-card-back {
@@ -262,17 +264,24 @@ footer {
 }
 
 .flip-card i {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 2rem; /* Уменьшили размер иконок */
+    margin-bottom: 0.5rem; /* Уменьшили отступ */
     color: #3498db;
 }
 
 .flip-card h3 {
-    font-size: 1.5rem;
-    margin: 1rem 0;
+    font-size: 1.25rem; /* Уменьшили размер заголовка */
+    margin: 0.5rem 0; /* Уменьшили отступ */
+    color: #333;
 }
 
 .flip-card p {
-    font-size: 1rem;
+    font-size: 0.9rem; /* Уменьшили размер текста */
     color: #666;
+    margin: 0;
+    overflow: hidden; /* Скрываем текст, если он выходит за пределы */
+    text-overflow: ellipsis; /* Добавляем многоточие, если текст не помещается */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Ограничиваем количество строк */
+    -webkit-box-orient: vertical;
 }
