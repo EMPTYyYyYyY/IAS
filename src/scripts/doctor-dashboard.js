@@ -25,5 +25,5 @@ document.querySelectorAll('.sidebar nav ul li a').forEach(link => {
 // Выход из системы
 document.getElementById('logout').addEventListener('click', () => {
     localStorage.removeItem('token'); // Удаляем токен
-    window.location.href = '/doctor.html'; // Перенаправляем на страницу авторизации
+    window.location.href = 'https://emptyyyyyyy.github.io/IAS/src/html/doctor.html'; // Перенаправляем на страницу авторизации
 });
