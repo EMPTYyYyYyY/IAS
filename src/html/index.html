@@ -59,20 +59,44 @@
         <section class="features">
             <h2>Почему выбирают нас?</h2>
             <div class="features-grid">
-                <div class="feature">
-                    <i class="fas fa-heartbeat"></i>
-                    <h3>Забота о здоровье</h3>
-                    <p>Мы помогаем вам следить за вашим здоровьем и вовремя реагировать на изменения.</p>
+                <div class="flip-card" onclick="flipCard(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <i class="fas fa-heartbeat"></i>
+                            <h3>Забота о здоровье</h3>
+                            <p>Мы помогаем вам следить за вашим здоровьем и вовремя реагировать на изменения.</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Забота о здоровье</h3>
+                            <p>Наша платформа позволяет вам отслеживать ключевые показатели здоровья, такие как давление, пульс и уровень глюкозы. Вы получите уведомления, если что-то выйдет за пределы нормы.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="feature">
-                    <i class="fas fa-comments"></i>
-                    <h3>Общение с врачом</h3>
-                    <p>Вы можете легко связаться с врачом и получить консультацию.</p>
+                <div class="flip-card" onclick="flipCard(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <i class="fas fa-comments"></i>
+                            <h3>Общение с врачом</h3>
+                            <p>Вы можете легко связаться с врачом и получить консультацию.</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Общение с врачом</h3>
+                            <p>Через Telegram-бота вы можете задать вопросы врачу, получить рекомендации и уведомления о приемах.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="feature">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Анализ данных</h3>
-                    <p>Наши инструменты помогают анализировать ваши данные и выявлять тенденции.</p>
+                <div class="flip-card" onclick="flipCard(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Анализ данных</h3>
+                            <p>Наши инструменты помогают анализировать ваши данные и выявлять тенденции.</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Анализ данных</h3>
+                            <p>Мы предоставляем подробные графики и отчеты, чтобы вы могли отслеживать изменения в вашем здоровье.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -97,5 +121,11 @@
             <p>© 2023 Медицинская платформа. Все права защищены.</p>
         </div>
     </footer>
+
+    <script>
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+    </script>
 </body>
 </html>
