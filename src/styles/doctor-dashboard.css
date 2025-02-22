@@ -107,7 +107,7 @@ header .user-info button:hover {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    max-height: 600px; /* Ограничиваем высоту списка */
+    max-height: 1100px; /* Ограничиваем высоту списка */
     overflow-y: auto; /* Добавляем прокрутку */
     padding-right: 0.5rem; /* Чтобы не заезжало на скролл */
 }
