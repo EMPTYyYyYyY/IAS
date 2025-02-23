@@ -3,89 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>МедПлатформа - Личный кабинет пациента</title>
+    <title>МедПлатформа - Пациент</title>
     <link rel="stylesheet" href="https://emptyyyyyyy.github.io/IAS/src/styles/patient-dashboard.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- SVG иконки -->
-    <!-- SVG Sprite (полностью как у врача) -->
-<svg style="display: none;">
-    <symbol id="menu-icon" viewBox="0 0 24 24">
-        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-    </symbol>
-    <symbol id="chart-icon" viewBox="0 0 24 24">
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-5h2v5zm4 0h-2v-3h2v3zm0-5h-2v-2h2v2zm4 5h-2V7h2v10z"/>
-    </symbol>
-    <symbol id="profile-icon" viewBox="0 0 24 24">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-    </symbol>
-    <symbol id="exit-icon" viewBox="0 0 24 24">
-        <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
-    </symbol>
-</svg>
-
+    <!-- Шапка -->
     <header>
         <div class="header-content">
-            <div class="logo">
-                <svg class="icon-hospital">
-                    <use xlink:href="#hospital-icon"></use>
-                </svg>
-                <span>МедПлатформа</span>
-            </div>
+            <h1><i class="fas fa-hospital"></i> МедПлатформа</h1>
             <div class="user-panel">
-                <svg class="icon">
-                    <use xlink:href="#profile-icon"></use>
-                </svg>
                 <span>Иван Иванов</span>
-                <button id="logout" class="icon-button">
-                    <svg class="icon">
-                        <use xlink:href="#exit-icon"></use>
-                    </svg>
-                </button>
+                <button id="logout"><i class="fas fa-sign-out-alt"></i></button>
             </div>
         </div>
     </header>
 
+    <!-- Основной контейнер -->
     <div class="dashboard">
+        <!-- Сайдбар -->
         <aside class="sidebar">
             <nav>
                 <ul>
-                    <li><a href="#" class="active">Показатели</a></li>
-                    <li><a href="#">Графики</a></li>
-                    <li><a href="#">Назначения</a></li>
-                    <li><a href="#">Сообщения</a></li>
+                    <li><a href="#metrics" class="active"><i class="fas fa-chart-line"></i> Показатели</a></li>
+                    <li><a href="#graphs"><i class="fas fa-chart-bar"></i> Графики</a></li>
+                    <li><a href="#prescriptions"><i class="fas fa-prescription-bottle"></i> Назначения</a></li>
+                    <li><a href="#messages"><i class="fas fa-comments"></i> Сообщения</a></li>
                 </ul>
             </nav>
         </aside>
 
+        <!-- Основной контент -->
         <main class="content">
-            <section class="active">
-                <div class="patient-grid">
-                    <!-- Карточки показателей -->
-                    <div class="patient-card">
-                        <h3><i class="fas fa-heartbeat"></i>Давление</h3>
-                        <p><i class="fas fa-clock"></i>120/80 мм рт.ст.</p>
-                        <p class="timestamp">13/05 14:30</p>
-                    </div>
+            <!-- Секция показателей -->
+            <section id="metrics" class="active">
+                <h2><i class="fas fa-heartbeat"></i> Мои показатели</h2>
+                <div class="patient-grid"></div>
+            </section>
 
-                    <div class="patient-card">
-                        <h3><i class="fas fa-tint"></i>Глюкоза</h3>
-                        <p><i class="fas fa-clock"></i>5.4 ммоль/л</p>
-                        <p class="timestamp">13/05 09:15</p>
-                    </div>
-
-                    <!-- График -->
-                    <div class="patient-card chart-card">
-                        <canvas id="healthChart"></canvas>
-                    </div>
+            <!-- Остальные секции -->
+            <section id="graphs" class="hidden">
+                <h2><i class="fas fa-chart-area"></i> Графики</h2>
+                <div class="chart-container">
+                    <canvas id="healthChart"></canvas>
                 </div>
             </section>
         </main>
     </div>
 
     <footer>
-        <p>© 2023 Медицинская платформа. Все права защищены.</p>
+        <p>© 2023 Медицинская платформа. Все права защищены</p>
     </footer>
 
     <script src="https://emptyyyyyyy.github.io/IAS/src/scripts/patient-dashboard.js"></script>
