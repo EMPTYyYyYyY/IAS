@@ -171,3 +171,43 @@ footer {
 .btn-back:hover {
     background: #2980b9;
 }
+
+.prescriptions-list {
+    display: grid;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.prescription-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    border-left: 4px solid #3498db;
+}
+
+.prescription-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.prescription-header i {
+    font-size: 1.8rem;
+    color: #3498db;
+}
+
+.prescription-body p {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #2c3e50;
+}
+
+.prescription-body i {
+    width: 20px;
+    text-align: center;
+    color: #7f8c8d;
+}
