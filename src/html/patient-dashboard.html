@@ -9,64 +9,90 @@
     <script src="https://emptyyyyyyy.github.io/IAS/src/scripts/patient-dashboard.js" defer></script>
 </head>
 <body>
-    <!-- SVG Sprite с иконками -->
+    <!-- SVG Sprite (точно как у врача) -->
     <svg style="display: none;">
-        <symbol id="logo-icon" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+        <symbol id="menu-icon" viewBox="0 0 24 24">
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
         </symbol>
-        <symbol id="user-icon" viewBox="0 0 24 24">
+        <symbol id="chart-icon" viewBox="0 0 24 24">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-5h2v5zm4 0h-2v-3h2v3zm0-5h-2v-2h2v2zm4 5h-2V7h2v10z"/>
+        </symbol>
+        <symbol id="profile-icon" viewBox="0 0 24 24">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
         </symbol>
     </svg>
 
     <div class="container">
-        <!-- Шапка -->
+        <!-- Шапка (как у врача) -->
         <header class="header">
-            <div class="logo">
-                <svg class="icon-large">
-                    <use xlink:href="#logo-icon"></use>
-                </svg>
-                <h1>МедПлатформа</h1>
-            </div>
-            <div class="user-panel">
+            <button class="menu-button">
                 <svg class="icon">
-                    <use xlink:href="#user-icon"></use>
+                    <use xlink:href="#menu-icon"></use>
                 </svg>
-                <span class="username">Иван Иванов</span>
+            </button>
+            <div class="header-title">МедПлатформа</div>
+            <div class="user-info">
+                <svg class="icon">
+                    <use xlink:href="#profile-icon"></use>
+                </svg>
+                <span>Иван Иванов</span>
             </div>
         </header>
 
         <!-- Основной контент -->
-        <main class="content">
-            <h2>Мои показатели</h2>
-            
-            <!-- Карточки показателей -->
-            <div class="card">
-                <h3>Артериальное давление</h3>
-                <div class="metric-data">
-                    <span class="value">120/80</span>
-                    <span class="timestamp">13/05 14:30</span>
-                </div>
+        <main class="main-content">
+            <div class="content-header">
+                <h1>Мои показатели</h1>
             </div>
 
-            <div class="card">
-                <h3>Уровень глюкозы</h3>
-                <div class="metric-data">
-                    <span class="value">5.4 ммоль/л</span>
-                    <span class="timestamp">13/05 09:15</span>
+            <!-- Карточки в стиле врача -->
+            <div class="card-grid">
+                <!-- Карточка давления -->
+                <div class="card">
+                    <div class="card-header">
+                        <svg class="icon">
+                            <use xlink:href="#chart-icon"></use>
+                        </svg>
+                        <h3>Артериальное давление</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="metric">
+                            <span class="value">120/80</span>
+                            <span class="label">Последнее измерение: 13/05</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- График -->
-            <div class="chart-card">
-                <canvas id="healthChart"></canvas>
+                <!-- Карточка пульса -->
+                <div class="card">
+                    <div class="card-header">
+                        <svg class="icon">
+                            <use xlink:href="#chart-icon"></use>
+                        </svg>
+                        <h3>Пульс</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="metric">
+                            <span class="value">72 уд/мин</span>
+                            <span class="label">Последнее измерение: 13/05</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- График -->
+                <div class="card chart-card">
+                    <div class="card-header">
+                        <svg class="icon">
+                            <use xlink:href="#chart-icon"></use>
+                        </svg>
+                        <h3>Динамика показателей</h3>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="healthChart"></canvas>
+                    </div>
+                </div>
             </div>
         </main>
-
-        <!-- Подвал -->
-        <footer class="footer">
-            <p>© 2023 Медицинская платформа. Все права защищены.</p>
-        </footer>
     </div>
 </body>
 </html>

@@ -1,100 +1,109 @@
-/* Общие стили */
+/* Все стили идентичны врачебным */
+:root {
+    --primary-color: #4F46E5;
+    --background-color: #F3F4F6;
+    --card-background: #FFFFFF;
+    --text-color: #1F2937;
+    --border-color: #E5E7EB;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Inter', sans-serif;
     margin: 0;
-    padding: 20px;
-    background: #f5f7fa;
-    color: #2d3748;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1440px;
     margin: 0 auto;
 }
 
-/* Шапка */
 .header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
-    border-bottom: 2px solid #e2e8f0;
+    padding: 1rem 2rem;
+    background-color: var(--card-background);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.icon-large {
-    width: 40px;
-    height: 40px;
-    fill: #4a5568;
-}
-
-.user-panel {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+.menu-button {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
 }
 
 .icon {
     width: 24px;
     height: 24px;
-    fill: #4a5568;
+    fill: var(--text-color);
 }
 
-/* Контент */
-.content {
-    margin-top: 30px;
+.header-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-left: 1rem;
+    flex-grow: 1;
 }
 
-h2 {
-    color: #2d3748;
-    font-size: 24px;
-    margin-bottom: 25px;
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-/* Карточки */
+.main-content {
+    padding: 2rem;
+}
+
+.content-header h1 {
+    font-size: 1.875rem;
+    margin-bottom: 2rem;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
 .card {
-    background: white;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background: var(--card-background);
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
 }
 
 .chart-card {
-    background: white;
-    border-radius: 8px;
-    padding: 20px;
-    margin-top: 30px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    grid-column: span 2;
 }
 
-.metric-data {
+.card-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-top: 15px;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.card-header h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
 }
 
 .value {
-    font-size: 24px;
-    font-weight: 600;
-    color: #4a5568;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
 }
 
-.timestamp {
-    color: #718096;
-    font-size: 14px;
-}
-
-/* Подвал */
-.footer {
-    text-align: center;
-    padding: 30px 0;
-    color: #718096;
-    margin-top: 50px;
+.label {
+    color: #6B7280;
+    font-size: 0.875rem;
 }

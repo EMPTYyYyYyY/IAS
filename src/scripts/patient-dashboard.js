@@ -1,15 +1,17 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
+    // Инициализация графика (как у врача)
     const ctx = document.getElementById('healthChart').getContext('2d');
     
     new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['01.10', '02.10', '03.10', '04.10', '05.10'],
+            labels: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
             datasets: [{
-                label: 'Артериальное давление (верхнее)',
-                data: [120, 125, 130, 128, 122],
-                borderColor: '#4a5568',
-                tension: 0.4
+                label: 'Давление (верхнее)',
+                data: [120, 122, 119, 123, 121, 118, 120],
+                borderColor: '#4F46E5',
+                tension: 0.4,
+                borderWidth: 2
             }]
         },
         options: {
@@ -19,8 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     position: 'top',
                 },
                 title: {
-                    display: true,
-                    text: 'Динамика показателей'
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: false
                 }
             }
         }
