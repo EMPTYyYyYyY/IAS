@@ -37,17 +37,31 @@
 
         <!-- Основной контент -->
         <main class="content">
-            <!-- Секция показателей -->
             <section id="metrics" class="active">
                 <h2><i class="fas fa-heartbeat"></i> Мои показатели</h2>
                 <div class="patient-grid"></div>
             </section>
-
-            <!-- Остальные секции -->
+            
             <section id="graphs" class="hidden">
                 <h2><i class="fas fa-chart-area"></i> Графики</h2>
                 <div class="chart-container">
                     <canvas id="healthChart"></canvas>
+                </div>
+            </section>
+            
+            <section id="prescriptions" class="hidden">
+                <h2><i class="fas fa-prescription-bottle"></i> Назначения</h2>
+                <div class="prescriptions-list"></div>
+            </section>
+            
+            <section id="messages" class="hidden">
+                <h2><i class="fas fa-comments"></i> Сообщения</h2>
+                <div class="messages-container">
+                    <div class="messages-history"></div>
+                    <div class="message-input">
+                        <textarea placeholder="Введите сообщение..."></textarea>
+                        <button><i class="fas fa-paper-plane"></i></button>
+                    </div>
                 </div>
             </section>
         </main>
