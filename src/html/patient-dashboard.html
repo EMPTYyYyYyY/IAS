@@ -6,12 +6,12 @@
     <title>МедПлатформа - Пациент</title>
     <link rel="stylesheet" href="https://emptyyyyyyy.github.io/IAS/src/styles/patient-dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <!-- Шапка -->
     <header>
         <div class="header-content">
-            <h1><i class="fas fa-hospital"></i>МедПлатформа</h1>
+            <h1><i class="fas fa-hospital"></i> МедПлатформа</h1>
             <div class="user-panel">
                 <span>Иван Иванов</span>
                 <button id="logout">
@@ -21,9 +21,7 @@
         </div>
     </header>
 
-    <!-- Основной контейнер -->
     <div class="dashboard">
-        <!-- Сайдбар -->
         <aside class="sidebar">
             <nav>
                 <ul>
@@ -35,25 +33,24 @@
             </nav>
         </aside>
 
-        <!-- Основной контент -->
         <main class="content">
             <section id="metrics" class="active">
                 <h2><i class="fas fa-heartbeat"></i> Мои показатели</h2>
                 <div class="patient-grid"></div>
             </section>
-            
+
             <section id="graphs" class="hidden">
                 <h2><i class="fas fa-chart-area"></i> Графики</h2>
                 <div class="chart-container">
                     <canvas id="healthChart"></canvas>
                 </div>
             </section>
-            
+
             <section id="prescriptions" class="hidden">
                 <h2><i class="fas fa-prescription-bottle"></i> Назначения</h2>
                 <div class="prescriptions-list"></div>
             </section>
-            
+
             <section id="messages" class="hidden">
                 <h2><i class="fas fa-comments"></i> Сообщения</h2>
                 <div class="messages-container">
