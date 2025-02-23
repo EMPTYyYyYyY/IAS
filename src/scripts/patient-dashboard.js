@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Инициализация графика (как у врача)
+document.addEventListener('DOMContentLoaded', () => {
+    // Инициализация графиков
     const ctx = document.getElementById('healthChart').getContext('2d');
     
     new Chart(ctx, {
@@ -7,28 +7,26 @@ document.addEventListener('DOMContentLoaded', function() {
         data: {
             labels: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
             datasets: [{
-                label: 'Давление (верхнее)',
+                label: 'Артериальное давление (верхнее)',
                 data: [120, 122, 119, 123, 121, 118, 120],
-                borderColor: '#4F46E5',
+                borderColor: '#3498db',
                 tension: 0.4,
                 borderWidth: 2
             }]
         },
         options: {
             responsive: true,
+            maintainAspectRatio: false,
             plugins: {
                 legend: {
                     position: 'top',
-                },
-                title: {
-                    display: false
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: false
                 }
             }
         }
+    });
+
+    // Обработчик кнопки выхода
+    document.getElementById('logout').addEventListener('click', () => {
+        window.location.href = '/logout';
     });
 });
