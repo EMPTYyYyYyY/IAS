@@ -1,8 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
+    let healthChart = null; // Будем хранить ссылку на график
+    
     // Инициализация данных
     generateMetrics();
     setupNavigation();
     setupLogout();
+    initChart(); // Первоначальная инициализация графика
 
     function generateMetrics() {
         const metrics = [
@@ -27,41 +30,92 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setupNavigation() {
         const navLinks = document.querySelectorAll('.sidebar nav a');
+        
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                
+                // Убираем активные классы
                 document.querySelectorAll('.sidebar nav a').forEach(a => a.classList.remove('active'));
-                document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+                document.querySelectorAll('section').forEach(s => {
+                    s.classList.remove('active');
+                    s.classList.add('hidden');
+                });
+
+                // Активируем выбранную секцию
                 this.classList.add('active');
-                document.querySelector(this.getAttribute('href')).classList.add('active');
+                const targetSection = document.getElementById(targetId);
+                if(targetSection) {
+                    targetSection.classList.add('active');
+                    targetSection.classList.remove('hidden');
+                    
+                    // Если это вкладка с графиком - перерисовываем
+                    if(targetId === 'graphs' && healthChart) {
+                        healthChart.update();
+                    }
+                }
             });
+        });
+    }
+
+    function initChart() {
+        const ctx = document.getElementById('healthChart').getContext('2d');
+        
+        // Уничтожаем предыдущий график если существует
+        if(healthChart) {
+            healthChart.destroy();
+        }
+        
+        healthChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
+                datasets: [{
+                    label: 'Артериальное давление',
+                    data: [120, 122, 119, 123, 121, 118, 120],
+                    borderColor: '#3498db',
+                    tension: 0.4,
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { 
+                        position: 'top',
+                        labels: {
+                            font: {
+                                size: 14
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        ticks: {
+                            font: {
+                                size: 12
+                            }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 12
+                            }
+                        }
+                    }
+                }
+            }
         });
     }
 
     function setupLogout() {
         document.getElementById('logout').addEventListener('click', () => {
-            window.location.href = 'index.html';
+            window.location.href = '/logout';
         });
     }
-
-    // Инициализация графика
-    const ctx = document.getElementById('healthChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
-            datasets: [{
-                label: 'Артериальное давление',
-                data: [120, 122, 119, 123, 121, 118, 120],
-                borderColor: '#3498db',
-                tension: 0.4
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: { position: 'top' }
-            }
-        }
-    });
 });
