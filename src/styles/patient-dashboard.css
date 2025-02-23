@@ -161,3 +161,22 @@ footer {
     font-size: 0.9rem;
     margin-top: 10px;
 }
+
+/* Стили иконок как у врача */
+.icon {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.icon-button:hover .icon {
+    fill: #e74c3c;
+}
