@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setupLogout() {
         document.getElementById('logout').addEventListener('click', () => {
-            window.location.href = '/logout';
+            window.location.href = 'index.html';
         });
     }
 
