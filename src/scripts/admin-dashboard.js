@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Инициализация данных
     generateDoctors();
     generatePatients();
-    setupNavigation();
+    setupNavigation(); // Настройка навигации
     setupLogout();
     initCharts();
 
@@ -94,28 +94,47 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Настройка навигации
+    // Настройка навигации (ИСПРАВЛЕНО)
     function setupNavigation() {
         const navLinks = document.querySelectorAll('.sidebar nav a');
-        
+        const sections = document.querySelectorAll('section');
+
+        // Функция для переключения вкладок
+        const switchTab = (targetId) => {
+            // Скрываем все секции
+            sections.forEach(section => {
+                section.classList.remove('active');
+                section.classList.add('hidden');
+            });
+
+            // Показываем выбранную секцию
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+                targetSection.classList.add('active');
+            }
+
+            // Убираем активный класс у всех ссылок
+            navLinks.forEach(link => link.classList.remove('active'));
+
+            // Добавляем активный класс к выбранной ссылке
+            const activeLink = document.querySelector(`.sidebar nav a[href="#${targetId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        };
+
+        // Обработчик кликов по ссылкам
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href').substring(1);
-                
-                document.querySelectorAll('.sidebar nav a, section').forEach(el => {
-                    el.classList.remove('active');
-                    if (el.tagName === 'SECTION') el.classList.add('hidden');
-                });
-
-                this.classList.add('active');
-                const targetSection = document.getElementById(targetId);
-                if (targetSection) {
-                    targetSection.classList.add('active');
-                    targetSection.classList.remove('hidden');
-                }
+                switchTab(targetId);
             });
         });
+
+        // По умолчанию открываем первую вкладку
+        switchTab('doctors');
     }
 
     // Выход из системы
@@ -123,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const logoutBtn = document.getElementById('logout');
         if (logoutBtn) {
             logoutBtn.addEventListener('click', () => {
-                window.location.href = 'index.html';
+                window.location.href = '/logout';
             });
         }
     }

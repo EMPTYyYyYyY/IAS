@@ -148,3 +148,11 @@ footer {
     padding: 1rem;
     margin-top: auto;
 }
+
+.hidden {
+    display: none;
+}
+
+.active {
+    display: block;
+}
