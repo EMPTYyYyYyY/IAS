@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кабинет администратора</title>
+    <link rel="stylesheet" href="https://emptyyyyyyy.github.io/IAS/src/styles/admin-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1><i class="fas fa-user-shield"></i> МедПлатформа - Администратор</h1>
+            <div class="user-panel">
+                <span>Администратор</span>
+                <button id="logout"><i class="fas fa-sign-out-alt"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="#doctors" class="active"><i class="fas fa-user-md"></i> Врачи</a></li>
+                    <li><a href="#patients"><i class="fas fa-users"></i> Пациенты</a></li>
+                    <li><a href="#statistics"><i class="fas fa-chart-bar"></i> Статистика</a></li>
+                    <li><a href="#settings"><i class="fas fa-cog"></i> Настройки</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <!-- Секция врачей -->
+            <section id="doctors" class="active">
+                <h2><i class="fas fa-user-md"></i> Управление врачами</h2>
+                <button id="add-doctor" class="btn-primary">Добавить врача</button>
+                <div class="doctors-list"></div>
+            </section>
+
+            <!-- Секция пациентов -->
+            <section id="patients" class="hidden">
+                <h2><i class="fas fa-users"></i> Управление пациентами</h2>
+                <div class="patients-list"></div>
+            </section>
+
+            <!-- Секция статистики -->
+            <section id="statistics" class="hidden">
+                <h2><i class="fas fa-chart-bar"></i> Статистика</h2>
+                <div class="charts">
+                    <canvas id="doctorsChart"></canvas>
+                    <canvas id="patientsChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Секция настроек -->
+            <section id="settings" class="hidden">
+                <h2><i class="fas fa-cog"></i> Настройки системы</h2>
+                <form id="system-settings">
+                    <div class="form-group">
+                        <label for="notifications">Уведомления:</label>
+                        <select id="notifications">
+                            <option value="enabled">Включены</option>
+                            <option value="disabled">Отключены</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary">Сохранить</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2023 Медицинская платформа. Все права защищены</p>
+    </footer>
+
+    <script src="https://emptyyyyyyy.github.io/IAS/src/scripts/admin-dashboard.js"></script>
+</body>
+</html>
