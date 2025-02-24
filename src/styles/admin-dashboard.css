@@ -121,6 +121,7 @@ h1 {
 
 /* Кнопки */
 .btn-primary {
+    margin-top: 15px;
     background: #3498db;
     color: white;
     border: none;
