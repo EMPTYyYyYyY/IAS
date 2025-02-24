@@ -1,4 +1,4 @@
-/* Общие стили */
+/* Общие стили для страницы пациента */
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -6,11 +6,14 @@ body {
     background: #f0f2f5;
     color: #333;
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Шапка */
 .hero {
-    background: linear-gradient(135deg, #2c3e50, #34495e);
+    background: #2c3e50; /* Цвет фона вместо изображения */
     color: white;
     padding: 4rem 1rem;
     text-align: center;
@@ -26,40 +29,29 @@ body {
     margin-top: 1rem;
 }
 
-/* Контейнер */
+/* Основной контент */
 .container {
+    flex: 1;
     padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Секция авторизации */
-.login-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 60vh;
-}
-
-.login-container {
+/* Форма авторизации */
+.login-form {
     background: white;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
     max-width: 400px;
+    margin: 2rem auto;
     text-align: center;
 }
 
-.login-container h2 {
-    font-size: 2rem;
+.login-form h2 {
+    font-size: 1.5rem;
     margin-bottom: 1.5rem;
-}
-
-.login-container i {
-    font-size: 2.5rem;
-    color: #3498db;
-    margin-bottom: 1rem;
+    color: #333;
 }
 
 .form-group {
@@ -71,29 +63,53 @@ body {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
+    color: #555;
 }
 
 .form-group input {
-    width: 100%;
+    width: 90%;
     padding: 0.75rem;
     border: 1px solid #ddd;
-    border-radius: 6px;
+    border-radius: 5px;
     font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s;
 }
 
-.btn-primary {
+.form-group input:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+.login-form .btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
     background: #3498db;
     color: white;
     border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 6px;
-    font-size: 1rem;
+    border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s;
 }
 
-.btn-primary:hover {
+.login-form .btn:hover {
     background: #2980b9;
+}
+
+.forgot-password {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.forgot-password a {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
 }
 
 /* Футер */
@@ -137,4 +153,61 @@ footer {
     margin-top: 2rem;
     border-top: 1px solid #444;
     padding-top: 1rem;
+}
+
+/* Кнопка "Вернуться на главную" */
+.btn-back {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.btn-back:hover {
+    background: #2980b9;
+}
+
+.prescriptions-list {
+    display: grid;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.prescription-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    border-left: 4px solid #3498db;
+}
+
+.prescription-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.prescription-header i {
+    font-size: 1.8rem;
+    color: #3498db;
+}
+
+.prescription-body p {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #2c3e50;
+}
+
+.prescription-body i {
+    width: 20px;
+    text-align: center;
+    color: #7f8c8d;
 }
