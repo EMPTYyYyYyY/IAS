@@ -340,3 +340,45 @@ footer {
 .submit-btn:active {
     transform: translateY(0);
 }
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+/* Стили для новых типов полей */
+.form-group input[type="tel"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border 0.3s;
+}
+
+.form-group input[type="tel"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+/* Подсказка для СНИЛС */
+.form-group input[type="text"][placeholder] {
+    font-family: monospace;
+}
+
+/* Подсказка о формате */
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.8em;
+    color: #666;
+}

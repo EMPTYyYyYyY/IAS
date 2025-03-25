@@ -41,42 +41,59 @@
                 <div class="patient-grid"></div> <!-- Контейнер для пациентов -->
             </section>
 
-            <!-- Секция добавления пациента -->
-            <section id="add-patient" class="hidden">
-                <h2><i class="fas fa-user-plus"></i> Добавление нового пациента</h2>
-                <form id="patient-form" class="patient-form">
-                    <div class="form-group">
-                        <label for="last-name">Фамилия:</label>
-                        <input type="text" id="last-name" name="last-name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="first-name">Имя:</label>
-                        <input type="text" id="first-name" name="first-name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="middle-name">Отчество:</label>
-                        <input type="text" id="middle-name" name="middle-name">
-                    </div>
-                    <div class="form-group">
-                        <label for="birth-date">Дата рождения:</label>
-                        <input type="date" id="birth-date" name="birth-date" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Пол:</label>
-                        <div class="radio-group">
-                            <label>
-                                <input type="radio" name="gender" value="male" checked>
-                                <span>Мужской</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="gender" value="female">
-                                <span>Женский</span>
-                            </label>
-                        </div>
-                    </div>
-                    <button type="submit" class="submit-btn">Добавить пациента</button>
-                </form>
-            </section>
+            <!-- Остальной код остается таким же, меняем только секцию добавления пациента -->
+<section id="add-patient" class="hidden">
+    <h2><i class="fas fa-user-plus"></i> Добавление нового пациента</h2>
+    <form id="patient-form" class="patient-form">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="last-name">Фамилия:</label>
+                <input type="text" id="last-name" name="last-name" required>
+            </div>
+            <div class="form-group">
+                <label for="first-name">Имя:</label>
+                <input type="text" id="first-name" name="first-name" required>
+            </div>
+            <div class="form-group">
+                <label for="middle-name">Отчество:</label>
+                <input type="text" id="middle-name" name="middle-name">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="birth-date">Дата рождения:</label>
+                <input type="date" id="birth-date" name="birth-date" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Телефон:</label>
+                <input type="tel" id="phone" name="phone" required placeholder="+7 (XXX) XXX-XX-XX">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required minlength="6">
+        </div>
+
+        <div class="form-group">
+            <label for="address">Адрес:</label>
+            <input type="text" id="address" name="address" required>
+        </div>
+
+        <div class="form-group">
+            <label for="snils">СНИЛС:</label>
+            <input type="text" id="snils" name="snils" required placeholder="XXX-XXX-XXX XX" pattern="\d{3}-\d{3}-\d{3} \d{2}">
+        </div>
+
+        <button type="submit" class="submit-btn">Добавить пациента</button>
+    </form>
+</section>
 
             <!-- Секция чата -->
             <section id="chat" class="hidden">

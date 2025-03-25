@@ -78,39 +78,58 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Обработка формы добавления пациента
-    function setupPatientForm() {
-        const form = document.getElementById('patient-form');
-        if (form) {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Получаем данные из формы
-                const lastName = document.getElementById('last-name').value;
-                const firstName = document.getElementById('first-name').value;
-                const middleName = document.getElementById('middle-name').value;
-                const birthDate = document.getElementById('birth-date').value;
-                const gender = document.querySelector('input[name="gender"]:checked').value;
-                
-                // Здесь можно добавить логику отправки данных на сервер
-                console.log('Данные пациента:', {
-                    lastName,
-                    firstName,
-                    middleName,
-                    birthDate,
-                    gender: gender === 'male' ? 'Мужской' : 'Женский'
-                });
-                
-                // Очищаем форму
-                form.reset();
-                
-                // Показываем уведомление
-                alert('Пациент успешно добавлен!');
-                
-                // Переключаемся на вкладку пациентов
-                document.querySelector('.sidebar nav a[href="#patients"]').click();
+    // Обработка формы добавления пациента
+function setupPatientForm() {
+    const form = document.getElementById('patient-form');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Получаем данные из формы
+            const formData = {
+                lastName: document.getElementById('last-name').value,
+                firstName: document.getElementById('first-name').value,
+                middleName: document.getElementById('middle-name').value,
+                birthDate: document.getElementById('birth-date').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+                address: document.getElementById('address').value,
+                snils: document.getElementById('snils').value
+            };
+            
+            // Здесь можно добавить логику отправки данных на сервер
+            console.log('Данные пациента:', formData);
+            
+            // Очищаем форму
+            form.reset();
+            
+            // Показываем уведомление
+            alert('Пациент успешно добавлен!');
+            
+            // Переключаемся на вкладку пациентов
+            document.querySelector('.sidebar nav a[href="#patients"]').click();
+        });
+
+        // Маска для телефона
+        const phoneInput = document.getElementById('phone');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', function(e) {
+                let x = e.target.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+                e.target.value = !x[2] ? x[1] : '+7 (' + x[2] + (x[3] ? ') ' + x[3] : '') + (x[4] ? '-' + x[4] : '') + (x[5] ? '-' + x[5] : '');
+            });
+        }
+
+        // Маска для СНИЛС
+        const snilsInput = document.getElementById('snils');
+        if (snilsInput) {
+            snilsInput.addEventListener('input', function(e) {
+                let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,2})/);
+                e.target.value = !x[2] ? x[1] : x[1] + '-' + x[2] + (x[3] ? '-' + x[3] : '') + (x[4] ? ' ' + x[4] : '');
             });
         }
     }
+}
 
     // Демо-чат
     const chatButton = document.querySelector('.chat-input button');
