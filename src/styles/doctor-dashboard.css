@@ -382,3 +382,34 @@ footer {
     font-size: 0.8em;
     color: #666;
 }
+
+.required-star {
+    color: #e74c3c;
+    margin-left: 4px;
+    cursor: help;
+    position: relative;
+}
+
+/* Подсказка при наведении на звездочку */
+.required-star:hover::after {
+    content: attr(title);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    white-space: nowrap;
+    z-index: 100;
+    margin-top: 5px;
+}
+
+/* Альтернативный вариант подсказки для мобильных устройств */
+@media (max-width: 768px) {
+    .required-star:hover::after {
+        left: auto;
+        right: 0;
+    }
+}
