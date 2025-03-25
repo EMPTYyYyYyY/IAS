@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     generatePatients();
     setupNavigation();
     setupLogout();
+    setupPatientForm();
 
     // Генерация тестовых данных
     function generatePatients() {
@@ -73,6 +74,41 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } else {
             console.error('Кнопка выхода не найдена.');
+        }
+    }
+
+    // Обработка формы добавления пациента
+    function setupPatientForm() {
+        const form = document.getElementById('patient-form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Получаем данные из формы
+                const lastName = document.getElementById('last-name').value;
+                const firstName = document.getElementById('first-name').value;
+                const middleName = document.getElementById('middle-name').value;
+                const birthDate = document.getElementById('birth-date').value;
+                const gender = document.querySelector('input[name="gender"]:checked').value;
+                
+                // Здесь можно добавить логику отправки данных на сервер
+                console.log('Данные пациента:', {
+                    lastName,
+                    firstName,
+                    middleName,
+                    birthDate,
+                    gender: gender === 'male' ? 'Мужской' : 'Женский'
+                });
+                
+                // Очищаем форму
+                form.reset();
+                
+                // Показываем уведомление
+                alert('Пациент успешно добавлен!');
+                
+                // Переключаемся на вкладку пациентов
+                document.querySelector('.sidebar nav a[href="#patients"]').click();
+            });
         }
     }
 

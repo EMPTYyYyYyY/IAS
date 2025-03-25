@@ -26,6 +26,7 @@
             <nav>
                 <ul>
                     <li><a href="#patients" class="active"><i class="fas fa-users"></i> Пациенты</a></li>
+                    <li><a href="#add-patient"><i class="fas fa-user-plus"></i> Добавление пациента</a></li>
                     <li><a href="#chat"><i class="fas fa-comment-medical"></i> Чат</a></li>
                     <li><a href="#notifications"><i class="fas fa-bell"></i> Уведомления</a></li>
                 </ul>
@@ -33,32 +34,68 @@
         </aside>
 
         <!-- Основной контент -->
-        <!-- Основной контент -->
-<main class="content">
-    <!-- Секция пациентов -->
-    <section id="patients" class="active">
-        <h2><i class="fas fa-user-injured"></i> Мои пациенты</h2>
-        <div class="patient-grid"></div> <!-- Контейнер для пациентов -->
-    </section>
+        <main class="content">
+            <!-- Секция пациентов -->
+            <section id="patients" class="active">
+                <h2><i class="fas fa-user-injured"></i> Мои пациенты</h2>
+                <div class="patient-grid"></div> <!-- Контейнер для пациентов -->
+            </section>
 
-    <!-- Секция чата -->
-    <section id="chat" class="hidden">
-        <h2><i class="fas fa-comments"></i> Чат с пациентом</h2>
-        <div class="chat-container">
-            <div class="chat-messages"></div> <!-- Контейнер для сообщений -->
-            <div class="chat-input">
-                <textarea placeholder="Введите сообщение..."></textarea>
-                <button><i class="fas fa-paper-plane"></i></button>
-            </div>
-        </div>
-    </section>
+            <!-- Секция добавления пациента -->
+            <section id="add-patient" class="hidden">
+                <h2><i class="fas fa-user-plus"></i> Добавление нового пациента</h2>
+                <form id="patient-form" class="patient-form">
+                    <div class="form-group">
+                        <label for="last-name">Фамилия:</label>
+                        <input type="text" id="last-name" name="last-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="first-name">Имя:</label>
+                        <input type="text" id="first-name" name="first-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="middle-name">Отчество:</label>
+                        <input type="text" id="middle-name" name="middle-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="birth-date">Дата рождения:</label>
+                        <input type="date" id="birth-date" name="birth-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Пол:</label>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="gender" value="male" checked>
+                                <span>Мужской</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="gender" value="female">
+                                <span>Женский</span>
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">Добавить пациента</button>
+                </form>
+            </section>
 
-    <!-- Секция уведомлений -->
-    <section id="notifications" class="hidden">
-        <h2><i class="fas fa-exclamation-circle"></i> Уведомления</h2>
-        <div class="notifications-list"></div> <!-- Контейнер для уведомлений -->
-    </section>
-</main>
+            <!-- Секция чата -->
+            <section id="chat" class="hidden">
+                <h2><i class="fas fa-comments"></i> Чат с пациентом</h2>
+                <div class="chat-container">
+                    <div class="chat-messages"></div> <!-- Контейнер для сообщений -->
+                    <div class="chat-input">
+                        <textarea placeholder="Введите сообщение..."></textarea>
+                        <button><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Секция уведомлений -->
+            <section id="notifications" class="hidden">
+                <h2><i class="fas fa-exclamation-circle"></i> Уведомления</h2>
+                <div class="notifications-list"></div> <!-- Контейнер для уведомлений -->
+            </section>
+        </main>
     </div>
 
     <!-- Футер -->
