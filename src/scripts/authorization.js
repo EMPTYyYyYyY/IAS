@@ -24,7 +24,10 @@ document.querySelector('.login-form form').addEventListener('submit', async func
         }
         
         // Получаем куки из ответа
-        const cookies = loginResponse.headers.get('set-cookie');
+        const cookies = Array.from(loginResponse.headers.entries())
+        .filter(([key]) => key === 'set-cookie')
+        .map(([, value]) => value)
+        .join('; ');
         if (!cookies) {
             throw new Error('Не получили куки от сервера');
         }
