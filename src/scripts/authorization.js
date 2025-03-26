@@ -11,7 +11,7 @@ document.querySelector('.login-form form').addEventListener('submit', async func
             headers: {
                 'Content-Type': 'application/json'
             },
-            credentials: 'include',
+            credentials: 'include', // На всякий случай оставляем
             body: JSON.stringify({
                 email: email,
                 password: password
@@ -23,13 +23,20 @@ document.querySelector('.login-form form').addEventListener('submit', async func
             throw new Error(errorData.message || 'Ошибка авторизации');
         }
         
-        // Второй запрос - получение профиля
+        // Получаем куки из ответа
+        const cookies = loginResponse.headers.get('set-cookie');
+        if (!cookies) {
+            throw new Error('Не получили куки от сервера');
+        }
+        
+        // Второй запрос - получение профиля с явной передачей кук
         const profileResponse = await fetch('https://media-grapper.ru.tuna.am/api/profile', {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Cookie': cookies // Явно передаем куки
             },
-            credentials: 'include',
+            credentials: 'include' // Дублируем для надежности
         });
         
         if (!profileResponse.ok) {
@@ -38,7 +45,7 @@ document.querySelector('.login-form form').addEventListener('submit', async func
         
         const profileData = await profileResponse.json();
         
-        // Перенаправление в зависимости от userType
+        // Перенаправление
         switch(profileData.userType) {
             case 'Doctor':
                 window.location.href = 'doctor-dashboard.html';
