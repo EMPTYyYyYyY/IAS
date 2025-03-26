@@ -9,7 +9,8 @@ document.querySelector('.login-form form').addEventListener('submit', async func
         const loginResponse = await fetch('https://media-grapper.ru.tuna.am/auth/login', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'accept': '*/*'
             },
             body: JSON.stringify({
                 email: email,
