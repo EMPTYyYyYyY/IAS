@@ -11,6 +11,7 @@ document.querySelector('.login-form form').addEventListener('submit', async func
             headers: {
                 'Content-Type': 'application/json'
             },
+            credentials: 'include',
             body: JSON.stringify({
                 email: email,
                 password: password
@@ -27,7 +28,8 @@ document.querySelector('.login-form form').addEventListener('submit', async func
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            credentials: 'include',
         });
         
         if (!profileResponse.ok) {
