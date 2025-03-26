@@ -18,26 +18,11 @@ document.querySelector('.login-form form').addEventListener('submit', async func
             })
         });
         
-        if (!loginResponse.ok) {
-            const errorData = await loginResponse.json();
-            throw new Error(errorData.message || 'Ошибка авторизации');
-        }
-        
-        // Получаем куки из ответа
-        const cookies = Array.from(loginResponse.headers.entries())
-        .filter(([key]) => key === 'set-cookie')
-        .map(([, value]) => value)
-        .join('; ');
-        if (!cookies) {
-            throw new Error('Не получили куки от сервера');
-        }
-        
         // Второй запрос - получение профиля с явной передачей кук
         const profileResponse = await fetch('https://media-grapper.ru.tuna.am/api/profile', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Cookie': cookies // Явно передаем куки
             },
             credentials: 'include' // Дублируем для надежности
         });
