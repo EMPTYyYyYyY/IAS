@@ -20,11 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const grid = document.querySelector('.patient-grid');
         if (grid) {
-            grid.innerHTML = ''; // Очищаем перед добавлением
+            grid.innerHTML = '';
             patients.forEach(patient => {
                 const card = document.createElement('div');
                 card.classList.add('patient-card');
-
                 card.innerHTML = `
                     <h3><i class="fas fa-user"></i> ${patient.name}</h3>
                     <p><i class="fas fa-birthday-cake"></i> Возраст: ${patient.age}</p>
@@ -32,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p><i class="fas fa-heartbeat"></i> Последние данные: ${patient.lastData}</p>
                     <button class="details-btn">Подробнее <i class="fas fa-arrow-right"></i></button>
                 `;
-
                 grid.appendChild(card);
             });
         } else {
@@ -57,18 +55,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Функция переключения секций
     function switchToSection(sectionId) {
-        // Удаление активного класса
         document.querySelectorAll('.sidebar nav a').forEach(a => a.classList.remove('active'));
         document.querySelectorAll('section').forEach(section => section.classList.remove('active'));
         
-        // Активация выбранного раздела
         const navLink = document.querySelector(`.sidebar nav a[href="${sectionId}"]`);
         const targetSection = document.querySelector(sectionId);
         
         if (navLink) navLink.classList.add('active');
         if (targetSection) targetSection.classList.add('active');
         
-        // Обновляем список пациентов при переходе на их вкладку
         if (sectionId === '#patients') {
             generatePatients();
         }
@@ -94,77 +89,76 @@ document.addEventListener('DOMContentLoaded', () => {
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
-                // Получаем данные из формы
-                const genderValue = document.querySelector('input[name="gender"]:checked')?.value;
-                const phoneValue = document.getElementById('phone').value;
-                const addressValue = document.getElementById('address').value;
-                const birthDateValue = document.getElementById('birth-date').value;
-                
-                // Проверка данных перед отправкой
-                alert(`Проверка данных:\nПол: ${genderValue}\nДата рождения: ${birthDateValue}`);
-                
-                if (!genderValue) {
-                    alert('Ошибка: не выбран пол пациента');
-                    return;
-                }
-                
-                if (!birthDateValue) {
-                    alert('Ошибка: не указана дата рождения');
-                    return;
-                }
-                
-                // Формируем объект для запроса
-                const requestData = {
-                    email: document.getElementById('email').value,
-                    password: document.getElementById('password').value,
-                    userInfo: {
-                        firstName: document.getElementById('first-name').value,
-                        lastName: document.getElementById('last-name').value,
-                        middleName: document.getElementById('middle-name').value || null,
-                        sex: genderValue === 'male' ? 'Male' : 'Female',
-                        birthday: birthDateValue
-                    },
-                    snils: document.getElementById('snils').value.replace(/\D/g, '')
-                };
-                
-                // Добавляем телефон, если он заполнен
-                if (phoneValue && phoneValue.trim() !== '') {
-                    requestData.userInfo.phoneNumber = phoneValue.replace(/\D/g, '');
-                }
-                
-                // Добавляем адрес, если он заполнен
-                if (addressValue && addressValue.trim() !== '') {
-                    requestData.address = addressValue;
-                }
-                
-                // Проверка финальных данных
-                alert(`Данные для отправки:\n${JSON.stringify(requestData, null, 2)}`);
-                
                 try {
-                    // Отправляем запрос на сервер
+                    // Получаем данные из формы
+                    const genderValue = document.querySelector('input[name="gender"]:checked')?.value;
+                    const phoneValue = document.getElementById('phone').value;
+                    const addressValue = document.getElementById('address').value;
+                    const birthDateValue = document.getElementById('birth-date').value;
+                    
+                    // Валидация обязательных полей
+                    if (!genderValue) throw new Error('Не выбран пол пациента');
+                    if (!birthDateValue) throw new Error('Не указана дата рождения');
+                    
+                    // Формируем объект для запроса
+                    const requestData = {
+                        email: document.getElementById('email').value,
+                        password: document.getElementById('password').value,
+                        userInfo: {
+                            firstName: document.getElementById('first-name').value,
+                            lastName: document.getElementById('last-name').value,
+                            middleName: document.getElementById('middle-name').value || null,
+                            sex: genderValue === 'male' ? 'Male' : 'Female',
+                            birthday: birthDateValue
+                        },
+                        snils: document.getElementById('snils').value.replace(/\D/g, '')
+                    };
+                    
+                    // Опциональные поля
+                    if (phoneValue && phoneValue.trim() !== '') {
+                        requestData.userInfo.phoneNumber = phoneValue.replace(/\D/g, '');
+                    }
+                    if (addressValue && addressValue.trim() !== '') {
+                        requestData.address = addressValue;
+                    }
+                    
+                    // Отправка запроса
                     const response = await fetch(BASE_URL + '/api/patients', {
                         method: 'POST',
                         headers: {
-                            'Content-Type': 'application/json'
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${localStorage.getItem('token')}`
                         },
                         body: JSON.stringify(requestData)
                     });
                     
+                    // Обработка ответа
+                    const responseText = await response.text();
+                    
                     if (!response.ok) {
-                        const errorData = await response.json();
-                        throw new Error(errorData.message || 'Ошибка при создании пациента');
+                        let errorMessage = 'Ошибка сервера';
+                        try {
+                            const errorData = responseText ? JSON.parse(responseText) : {};
+                            errorMessage = errorData.message || errorData.error || errorMessage;
+                        } catch (e) {
+                            errorMessage = responseText || errorMessage;
+                        }
+                        throw new Error(errorMessage);
                     }
                     
-                    const data = await response.json();
-                    console.log('Пациент создан:', data);
+                    // Успешный ответ
+                    let data = null;
+                    if (responseText) {
+                        try {
+                            data = JSON.parse(responseText);
+                            console.log('Успешный ответ:', data);
+                        } catch (e) {
+                            console.warn('Ответ не в JSON формате:', responseText);
+                        }
+                    }
                     
-                    // Очищаем форму
                     form.reset();
-                    
-                    // Показываем уведомление
                     alert('Пациент успешно добавлен!');
-                    
-                    // Переключаемся на вкладку пациентов
                     switchToSection('#patients');
                     
                 } catch (error) {
