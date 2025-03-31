@@ -126,8 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const response = await fetch(BASE_URL + '/api/patients', {
                         method: 'POST',
                         headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${localStorage.getItem('token')}`
+                            'Content-Type': 'application/json'
                         },
                         body: JSON.stringify(requestData)
                     });
