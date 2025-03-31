@@ -1,5 +1,4 @@
 const BASE_URL = "__BASE_URL__";
-alert(JSON.stringify(BASE_URL))
 document.querySelector('.login-form form').addEventListener('submit', async function(e) {
     e.preventDefault();
     
