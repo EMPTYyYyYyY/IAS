@@ -6,7 +6,7 @@ document.querySelector('.login-form form').addEventListener('submit', async func
     
     try {
         // Первый запрос - авторизация
-        const loginResponse = await fetch('https://media-grapper.ru.tuna.am/auth/login', {
+        const loginResponse = await fetch('https://ias.ru.tuna.am/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -19,7 +19,7 @@ document.querySelector('.login-form form').addEventListener('submit', async func
         });
         
         // Второй запрос - получение профиля с явной передачей кук
-        const profileResponse = await fetch('https://media-grapper.ru.tuna.am/api/profile', {
+        const profileResponse = await fetch('https://ias.ru.tuna.am/api/profile', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

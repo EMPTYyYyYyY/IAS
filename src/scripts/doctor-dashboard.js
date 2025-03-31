@@ -100,7 +100,23 @@ function setupPatientForm() {
             
             // Здесь можно добавить логику отправки данных на сервер
             console.log('Данные пациента:', formData);
-            
+            try {
+                const addPatient = fetch('https://media-grapper.ru.tuna.am/api/patient', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include', // На всякий случай оставляем
+                    body: JSON.stringify({
+                        email: email,
+                        password: password,
+                        
+                    })
+                });
+            } catch {
+                alert(error.message || 'Пациент не добавился');
+                console.error('Ошибка:', error);
+            }
             // Очищаем форму
             form.reset();
             
