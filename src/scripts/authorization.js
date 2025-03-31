@@ -1,4 +1,5 @@
 const BASE_URL = "https://ias.ru.tuna.am";
+alert(BASE_URL)
 document.querySelector('.login-form form').addEventListener('submit', async function(e) {
     e.preventDefault();
     
