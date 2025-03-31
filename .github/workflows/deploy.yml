@@ -12,7 +12,7 @@ jobs:
 
       - name: Replace domain in JS file
         run: |
-          sed -i "s|__BASE_URL__|${{ secrets.BASE_URL }}|g" authorzation.js
+          sed -i "s|__BASE_URL__|${{ secrets.BASE_URL }}|g" src/scripts/authorization.js
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
