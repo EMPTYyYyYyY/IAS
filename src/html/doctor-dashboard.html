@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кабинет врача</title>
+    <link rel="stylesheet" href="https://emptyyyyyyy.github.io/IAS/src/styles/doctor-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="header-content">
+            <h1><i class="fas fa-hospital"></i> МедПлатформа</h1>
+            <div class="user-panel">
+                <span>Доктор Иванова</span>
+                <button id="logout"><i class="fas fa-sign-out-alt"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контейнер -->
+    <div class="dashboard">
+        <!-- Сайдбар -->
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="#patients" class="active"><i class="fas fa-users"></i> Пациенты</a></li>
+                    <li><a href="#add-patient"><i class="fas fa-user-plus"></i> Добавление пациента</a></li>
+                    <li><a href="#chat"><i class="fas fa-comment-medical"></i> Чат</a></li>
+                    <li><a href="#notifications"><i class="fas fa-bell"></i> Уведомления</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Основной контент -->
+        <main class="content">
+            <!-- Секция пациентов -->
+            <section id="patients" class="active">
+                <h2><i class="fas fa-user-injured"></i> Мои пациенты</h2>
+                <div class="patient-grid"></div> <!-- Контейнер для пациентов -->
+            </section>
+
+            <!-- Остальной код остается таким же, меняем только секцию добавления пациента -->
+<section id="add-patient" class="hidden">
+    <h2><i class="fas fa-user-plus"></i> Добавление нового пациента</h2>
+    <form id="patient-form" class="patient-form">
+        <!-- Остальной код остается таким же, меняем только labels в форме -->
+<div class="form-row">
+    <div class="form-group">
+        <label for="last-name">Фамилия:<span class="required-star" title="Обязательное поле для заполнения">*</span></label>
+        <input type="text" id="last-name" name="last-name" required>
+    </div>
+    <div class="form-group">
+        <label for="first-name">Имя:<span class="required-star" title="Обязательное поле для заполнения">*</span></label>
+        <input type="text" id="first-name" name="first-name" required>
+    </div>
+    <div class="form-group">
+        <label for="middle-name">Отчество:</label>
+        <input type="text" id="middle-name" name="middle-name">
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="form-group">
+        <label for="birth-date">Дата рождения:<span class="required-star" title="Обязательное поле для заполнения">*</span></label>
+        <input type="date" id="birth-date" name="birth-date" required>
+    </div>
+    <div class="form-group">
+        <label for="phone">Телефон:</label>
+        <input type="tel" id="phone" name="phone" required placeholder="+7 (XXX) XXX-XX-XX">
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="email">E-mail:<span class="required-star" title="Обязательное поле для заполнения">*</span></label>
+    <input type="email" id="email" name="email" required>
+</div>
+
+<div class="form-group">
+    <label for="password">Пароль:<span class="required-star" title="Обязательное поле для заполнения">*</span></label>
+    <input type="password" id="password" name="password" required minlength="6">
+</div>
+
+<div class="form-group">
+    <label for="address">Адрес:</label>
+    <input type="text" id="address" name="address" required>
+</div>
+
+<div class="form-group">
+    <label for="snils">СНИЛС:<span class="required-star" title="Обязательное поле для заполнения">*</span></label>
+    <input type="text" id="snils" name="snils" required placeholder="XXX-XXX-XXX XX" pattern="\d{3}-\d{3}-\d{3} \d{2}">
+</div>
+
+        <button type="submit" class="submit-btn">Добавить пациента</button>
+    </form>
+</section>
+
+            <!-- Секция чата -->
+            <section id="chat" class="hidden">
+                <h2><i class="fas fa-comments"></i> Чат с пациентом</h2>
+                <div class="chat-container">
+                    <div class="chat-messages"></div> <!-- Контейнер для сообщений -->
+                    <div class="chat-input">
+                        <textarea placeholder="Введите сообщение..."></textarea>
+                        <button><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Секция уведомлений -->
+            <section id="notifications" class="hidden">
+                <h2><i class="fas fa-exclamation-circle"></i> Уведомления</h2>
+                <div class="notifications-list"></div> <!-- Контейнер для уведомлений -->
+            </section>
+        </main>
+    </div>
+
+    <!-- Футер -->
+    <footer>
+        <p>© 2025 Медицинская платформа. Все права защищены</p>
+    </footer>
+
+    <script src="https://emptyyyyyyy.github.io/IAS/src/scripts/doctor-dashboard.js"></script>
+</body>
+</html>

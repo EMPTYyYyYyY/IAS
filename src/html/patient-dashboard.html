@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МедПлатформа - Пациент</title>
+    <link rel="stylesheet" href="https://emptyyyyyyy.github.io/IAS/src/styles/patient-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1><i class="fas fa-hospital"></i> МедПлатформа</h1>
+            <div class="user-panel">
+                <span>Иван Иванов</span>
+                <button id="logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="#metrics" class="active"><i class="fas fa-chart-line"></i> Показатели</a></li>
+                    <li><a href="#graphs"><i class="fas fa-chart-bar"></i> Графики</a></li>
+                    <li><a href="#prescriptions"><i class="fas fa-prescription-bottle"></i> Назначения</a></li>
+                    <li><a href="#messages"><i class="fas fa-comments"></i> Сообщения</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <section id="metrics" class="active">
+                <h2><i class="fas fa-heartbeat"></i> Мои показатели</h2>
+                <div class="patient-grid"></div>
+            </section>
+
+            <section id="graphs" class="hidden">
+                <h2><i class="fas fa-chart-area"></i> Графики</h2>
+                <div class="chart-container">
+                    <canvas id="healthChart"></canvas>
+                </div>
+            </section>
+
+            <section id="prescriptions" class="hidden">
+                <h2><i class="fas fa-prescription-bottle"></i> Назначения</h2>
+                <div class="prescriptions-list"></div>
+            </section>
+
+            <section id="messages" class="hidden">
+                <h2><i class="fas fa-comments"></i> Сообщения</h2>
+                <div class="messages-container">
+                    <div class="messages-history"></div>
+                    <div class="message-input">
+                        <textarea placeholder="Введите сообщение..."></textarea>
+                        <button><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 Медицинская платформа. Все права защищены</p>
+    </footer>
+
+    <script src="https://emptyyyyyyy.github.io/IAS/src/scripts/patient-dashboard.js"></script>
+</body>
+</html>

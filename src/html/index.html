@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Медицинская платформа</title>
+    <link rel="stylesheet" href="https://emptyyyyyyy.github.io/IAS/src/styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Шапка с фоновым изображением -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Добро пожаловать в медицинскую платформу</h1>
+            <p>Ваш надежный помощник в заботе о здоровье</p>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="container">
+        <!-- Выбор роли -->
+        <section class="role-selection">
+            <h2>Выберите вашу роль:</h2>
+            <div class="cards">
+                <a href="authorization.html" class="card">
+                    <i class="fas fa-user-md"></i>
+                    <h3>Я врач</h3>
+                    <p>Управляйте данными пациентов, ставьте диагнозы и назначайте лечение.</p>
+                </a>
+                <a href="authorization.html" class="card">
+                    <i class="fas fa-user-injured"></i>
+                    <h3>Я пациент</h3>
+                    <p>Следите за своим здоровьем, общайтесь с врачом и получайте рекомендации.</p>
+                </a>
+                <a href="authorization.html" class="card">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Администратор</h3>
+                    <p>Управляйте системой, создавайте врачей и контролируйте данные.</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- О платформе -->
+        <section class="about">
+            <h2>О нашей платформе</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Медицинская платформа — это современное решение для взаимодействия врачей и пациентов.
+                        Мы предоставляем удобные инструменты для мониторинга здоровья, обмена сообщениями и анализа данных.
+                    </p>
+                    <p>
+                        Наша цель — сделать медицинскую помощь более доступной и эффективной для каждого.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="О платформе">
+                </div>
+            </div>
+        </section>
+
+        <!-- Преимущества -->
+        <section class="features">
+            <h2>Почему выбирают нас?</h2>
+            <div class="features-grid">
+                <div class="flip-card" onclick="flipCard(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <i class="fas fa-heartbeat"></i>
+                            <h3>Забота о здоровье</h3>
+                            <p>Мы помогаем вам следить за вашим здоровьем и вовремя реагировать на изменения.</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Забота о здоровье</h3>
+                            <p>Наша платформа позволяет вам отслеживать ключевые показатели здоровья, такие как давление, пульс и уровень глюкозы. Вы получите уведомления, если что-то выйдет за пределы нормы.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card" onclick="flipCard(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <i class="fas fa-comments"></i>
+                            <h3>Общение с врачом</h3>
+                            <p>Вы можете легко связаться с врачом и получить консультацию.</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Общение с врачом</h3>
+                            <p>Через Telegram-бота вы можете задать вопросы врачу, получить рекомендации и уведомления о приемах.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card" onclick="flipCard(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Анализ данных</h3>
+                            <p>Наши инструменты помогают анализировать ваши данные и выявлять тенденции.</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Анализ данных</h3>
+                            <p>Мы предоставляем подробные графики и отчеты, чтобы вы могли отслеживать изменения в вашем здоровье.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p>Email: support@medplatform.com</p>
+                <p>Телефон: +7 (123) 456-78-90</p>
+            </div>
+            <div class="footer-section">
+                <h3>Социальные сети</h3>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Медицинская платформа. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+    </script>
+</body>
+</html>
