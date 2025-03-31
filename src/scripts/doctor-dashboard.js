@@ -79,53 +79,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Обработка формы добавления пациента
     // Обработка формы добавления пациента
-function setupPatientForm() {
-    const form = document.getElementById('patient-form');
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Получаем данные из формы
-            const formData = {
-                lastName: document.getElementById('last-name').value,
-                firstName: document.getElementById('first-name').value,
-                middleName: document.getElementById('middle-name').value,
-                birthDate: document.getElementById('birth-date').value,
-                phone: document.getElementById('phone').value,
-                email: document.getElementById('email').value,
-                password: document.getElementById('password').value,
-                address: document.getElementById('address').value,
-                snils: document.getElementById('snils').value
-            };
-            
-            // Здесь можно добавить логику отправки данных на сервер
-            console.log('Данные пациента:', formData);
-            try {
-                const addPatient = fetch('https://ias.ru.tuna.am/api/patient', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    credentials: 'include', // На всякий случай оставляем
-                    body: JSON.stringify({
-                        email: email,
-                        password: password,
-                        
-                    })
-                });
-            } catch {
-                alert(error.message || 'Пациент не добавился');
-                console.error('Ошибка:', error);
-            }
-            // Очищаем форму
-            form.reset();
-            
-            // Показываем уведомление
-            alert('Пациент успешно добавлен!');
-            
-            // Переключаемся на вкладку пациентов
-            document.querySelector('.sidebar nav a[href="#patients"]').click();
-        });
+    function setupPatientForm() {
+        const form = document.getElementById('patient-form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Получаем данные из формы
+                const formData = {
+                    lastName: document.getElementById('last-name').value,
+                    firstName: document.getElementById('first-name').value,
+                    middleName: document.getElementById('middle-name').value,
+                    birthDate: document.getElementById('birth-date').value,
+                    gender: document.querySelector('input[name="gender"]:checked').value,
+                    phone: document.getElementById('phone').value,
+                    email: document.getElementById('email').value,
+                    password: document.getElementById('password').value,
+                    address: document.getElementById('address').value,
+                    snils: document.getElementById('snils').value
+                };
+                
+                console.log('Данные пациента:', formData);
+                form.reset();
+                
+                // Показываем уведомление
+                alert('Пациент успешно добавлен!');
+                
+                // Переключаемся на вкладку пациентов
+                document.querySelector('.sidebar nav a[href="#patients"]').click();
+            });
 
         // Маска для телефона
         const phoneInput = document.getElementById('phone');
