@@ -1,4 +1,5 @@
 const BASE_URL = "__BASE_URL__";
+
 document.addEventListener('DOMContentLoaded', () => {
     // Инициализация
     generatePatients();
@@ -19,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const grid = document.querySelector('.patient-grid');
         if (grid) {
+            grid.innerHTML = ''; // Очищаем перед добавлением
             patients.forEach(patient => {
                 const card = document.createElement('div');
                 card.classList.add('patient-card');
@@ -45,23 +47,30 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
-                    
-                    // Удаление активного класса
-                    document.querySelectorAll('.sidebar nav a').forEach(a => a.classList.remove('active'));
-                    document.querySelectorAll('section').forEach(section => section.classList.remove('active'));
-                    
-                    // Активация выбранного раздела
-                    this.classList.add('active');
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.classList.add('active');
-                    } else {
-                        console.error(`Элемент ${this.getAttribute('href')} не найден.`);
-                    }
+                    switchToSection(this.getAttribute('href'));
                 });
             });
         } else {
             console.error('Навигационные ссылки не найдены.');
+        }
+    }
+
+    // Функция переключения секций
+    function switchToSection(sectionId) {
+        // Удаление активного класса
+        document.querySelectorAll('.sidebar nav a').forEach(a => a.classList.remove('active'));
+        document.querySelectorAll('section').forEach(section => section.classList.remove('active'));
+        
+        // Активация выбранного раздела
+        const navLink = document.querySelector(`.sidebar nav a[href="${sectionId}"]`);
+        const targetSection = document.querySelector(sectionId);
+        
+        if (navLink) navLink.classList.add('active');
+        if (targetSection) targetSection.classList.add('active');
+        
+        // Обновляем список пациентов при переходе на их вкладку
+        if (sectionId === '#patients') {
+            generatePatients();
         }
     }
 
@@ -78,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    
     // Обработка формы добавления пациента
     function setupPatientForm() {
         const form = document.getElementById('patient-form');
@@ -87,9 +95,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault();
                 
                 // Получаем данные из формы
-                const genderValue = document.querySelector('input[name="gender"]:checked').value;
+                const genderValue = document.querySelector('input[name="gender"]:checked')?.value;
                 const phoneValue = document.getElementById('phone').value;
                 const addressValue = document.getElementById('address').value;
+                const birthDateValue = document.getElementById('birth-date').value;
+                
+                // Проверка данных перед отправкой
+                alert(`Проверка данных:\nПол: ${genderValue}\nДата рождения: ${birthDateValue}`);
+                
+                if (!genderValue) {
+                    alert('Ошибка: не выбран пол пациента');
+                    return;
+                }
+                
+                if (!birthDateValue) {
+                    alert('Ошибка: не указана дата рождения');
+                    return;
+                }
                 
                 // Формируем объект для запроса
                 const requestData = {
@@ -100,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         lastName: document.getElementById('last-name').value,
                         middleName: document.getElementById('middle-name').value || null,
                         sex: genderValue === 'male' ? 'Male' : 'Female',
-                        birthday: document.getElementById('birth-date').value
+                        birthday: birthDateValue
                     },
                     snils: document.getElementById('snils').value.replace(/\D/g, '')
                 };
@@ -115,12 +137,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     requestData.address = addressValue;
                 }
                 
+                // Проверка финальных данных
+                alert(`Данные для отправки:\n${JSON.stringify(requestData, null, 2)}`);
+                
                 try {
                     // Отправляем запрос на сервер
                     const response = await fetch(BASE_URL + '/api/patients', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${localStorage.getItem('token')}`
                         },
                         body: JSON.stringify(requestData)
                     });
@@ -140,17 +166,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     alert('Пациент успешно добавлен!');
                     
                     // Переключаемся на вкладку пациентов
-                    document.querySelector('.sidebar nav a[href="#patients"]').click();
-                    
-                    // Обновляем список пациентов
-                    generatePatients();
+                    switchToSection('#patients');
                     
                 } catch (error) {
                     console.error('Ошибка:', error);
                     alert(`Ошибка при создании пациента: ${error.message}`);
                 }
             });
-    
+
             // Маска для телефона
             const phoneInput = document.getElementById('phone');
             if (phoneInput) {
@@ -159,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     e.target.value = !x[2] ? x[1] : '+7 (' + x[2] + (x[3] ? ') ' + x[3] : '') + (x[4] ? '-' + x[4] : '') + (x[5] ? '-' + x[5] : '');
                 });
             }
-    
+
             // Маска для СНИЛС
             const snilsInput = document.getElementById('snils');
             if (snilsInput) {
@@ -187,12 +210,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     `;
                     input.value = '';
                     messages.scrollTop = messages.scrollHeight;
-                } else {
-                    console.error('Контейнер для сообщений не найден.');
                 }
             }
         });
-    } else {
-        console.error('Кнопка отправки сообщения не найдена.');
     }
 });
