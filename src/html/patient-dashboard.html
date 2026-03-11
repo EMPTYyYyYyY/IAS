@@ -1,73 +1,317 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>МедПлатформа - Пациент</title>
-    <link rel="stylesheet" href="https://emptyyyyyyy.github.io/IAS/src/styles/patient-dashboard.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Медисимо - Пациент</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="patient-dashboard.css" />
+  </head>
+  <body>
     <header>
-        <div class="header-content">
-            <h1><i class="fas fa-hospital"></i> МедПлатформа</h1>
-            <div class="user-panel">
-                <span>Иван Иванов</span>
-                <button id="logout">
-                    <i class="fas fa-sign-out-alt"></i>
-                </button>
+      <div class="header-content">
+        <h1><i class="fas fa-heartbeat"></i> Медисимо</h1>
+        <div class="user-panel">
+          <div class="profile-trigger" id="profileTrigger">
+            <div class="avatar">
+              <i class="fas fa-user"></i>
             </div>
+            <div class="user-info">
+              <span class="user-name">Иван Иванов</span>
+              <span class="user-email">ivan@example.com</span>
+            </div>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <button id="logout"><i class="fas fa-sign-out-alt"></i> Выйти</button>
         </div>
+      </div>
     </header>
 
+    <!-- Модальное окно редактирования профиля -->
+    <div class="modal" id="profileModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2><i class="fas fa-user-edit"></i> Редактировать профиль</h2>
+          <button class="close-modal" id="closeModal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="profileForm">
+            <div class="form-group">
+              <label><i class="fas fa-user"></i> ФИО</label>
+              <input type="text" id="editName" value="Иван Иванов" />
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-envelope"></i> Email</label>
+              <input type="email" id="editEmail" value="ivan@example.com" />
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-phone"></i> Телефон</label>
+              <input type="tel" id="editPhone" value="+7 (999) 000-00-00" />
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-calendar"></i> Дата рождения</label>
+              <input type="date" id="editBirthdate" value="1985-05-15" />
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-venus-mars"></i> Пол</label>
+              <select id="editGender">
+                <option value="male" selected>Мужской</option>
+                <option value="female">Женский</option>
+              </select>
+            </div>
+            <div class="form-actions">
+              <button type="button" class="btn-cancel" id="cancelEdit">
+                Отмена
+              </button>
+              <button type="submit" class="btn-save">
+                <i class="fas fa-save"></i> Сохранить
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Модальное окно записи к врачу -->
+    <div class="modal" id="appointmentModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2><i class="fas fa-calendar-plus"></i> Запись к врачу</h2>
+          <button class="close-modal" id="closeAppointmentModal">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="appointmentForm">
+            <div class="form-group">
+              <label><i class="fas fa-user-md"></i> Выберите специалиста</label>
+              <select id="appointDoctor" required>
+                <option value="">-- Выберите врача --</option>
+                <option value="therapist">Терапевт</option>
+                <option value="cardiologist">Кардиолог</option>
+                <option value="neurologist">Невролог</option>
+                <option value="endocrinologist">Эндокринолог</option>
+                <option value="dermatologist">Дерматолог</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-calendar"></i> Дата приема</label>
+              <input type="date" id="appointDate" required />
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-clock"></i> Время приема</label>
+              <select id="appointTime" required>
+                <option value="">-- Выберите время --</option>
+                <option value="09:00">09:00</option>
+                <option value="10:00">10:00</option>
+                <option value="11:00">11:00</option>
+                <option value="12:00">12:00</option>
+                <option value="14:00">14:00</option>
+                <option value="15:00">15:00</option>
+                <option value="16:00">16:00</option>
+                <option value="17:00">17:00</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-comment"></i> Причина обращения</label>
+              <textarea
+                id="appointReason"
+                rows="3"
+                placeholder="Опишите симптомы или причину визита..."
+              ></textarea>
+            </div>
+            <div class="form-actions">
+              <button type="button" class="btn-cancel" id="cancelAppointment">
+                Отмена
+              </button>
+              <button type="submit" class="btn-save">
+                <i class="fas fa-check"></i> Записаться
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Модальное окно детального просмотра показателя -->
+    <div class="modal" id="metricDetailModal">
+      <div class="modal-content modal-large">
+        <div class="modal-header">
+          <h2 id="metricDetailTitle">
+            <i class="fas fa-heartbeat"></i> Показатель
+          </h2>
+          <button class="close-modal" id="closeMetricModal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="metric-detail-header">
+            <div class="metric-current-value">
+              <span class="value-label">Текущее значение</span>
+              <span class="value-number" id="metricCurrentValue">120/80</span>
+              <span class="value-unit" id="metricCurrentUnit">мм рт. ст.</span>
+            </div>
+            <div class="metric-period-selector">
+              <button class="period-btn active" data-period="day">День</button>
+              <button class="period-btn" data-period="week">Неделя</button>
+              <button class="period-btn" data-period="month">Месяц</button>
+            </div>
+          </div>
+          <div class="metric-chart-container">
+            <canvas id="metricDetailChart"></canvas>
+          </div>
+          <div class="metric-statistics">
+            <div class="stat-card">
+              <i class="fas fa-arrow-up"></i>
+              <span>Максимум</span>
+              <strong id="statMax">130</strong>
+            </div>
+            <div class="stat-card">
+              <i class="fas fa-arrow-down"></i>
+              <span>Минимум</span>
+              <strong id="statMin">110</strong>
+            </div>
+            <div class="stat-card">
+              <i class="fas fa-average"></i>
+              <span>Среднее</span>
+              <strong id="statAvg">120</strong>
+            </div>
+            <div class="stat-card">
+              <i class="fas fa-check-circle"></i>
+              <span>Норма</span>
+              <strong id="statNormal">В пределах</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="dashboard">
-        <aside class="sidebar">
-            <nav>
-                <ul>
-                    <li><a href="#metrics" class="active"><i class="fas fa-chart-line"></i> Показатели</a></li>
-                    <li><a href="#graphs"><i class="fas fa-chart-bar"></i> Графики</a></li>
-                    <li><a href="#prescriptions"><i class="fas fa-prescription-bottle"></i> Назначения</a></li>
-                    <li><a href="#messages"><i class="fas fa-comments"></i> Сообщения</a></li>
-                </ul>
-            </nav>
-        </aside>
+      <aside class="sidebar">
+        <nav>
+          <ul>
+            <li>
+              <a href="#health-diary" class="active"
+                ><i class="fas fa-book-medical"></i> Дневник здоровья</a
+              >
+            </li>
+            <li>
+              <a href="#medications"><i class="fas fa-pills"></i> Лекарства</a>
+            </li>
+            <li>
+              <a href="#appointments"
+                ><i class="fas fa-calendar-check"></i> Мои Записи</a
+              >
+            </li>
+            <li>
+              <a href="#telemedicine"
+                ><i class="fas fa-comments"></i> Телемедицина</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
 
-        <main class="content">
-            <section id="metrics" class="active">
-                <h2><i class="fas fa-heartbeat"></i> Мои показатели</h2>
-                <div class="patient-grid"></div>
-            </section>
+      <main class="content">
+        <!-- Секция Дневник здоровья -->
+        <section id="health-diary" class="active">
+          <h2><i class="fas fa-book-medical"></i> Дневник здоровья</h2>
+          <p class="section-description">
+            Нажмите на карточку показателя, чтобы просмотреть детальную
+            статистику и графики
+          </p>
+          <div class="patient-grid"></div>
+        </section>
 
-            <section id="graphs" class="hidden">
-                <h2><i class="fas fa-chart-area"></i> Графики</h2>
-                <div class="chart-container">
-                    <canvas id="healthChart"></canvas>
+        <!-- Секция Лекарства -->
+        <section id="medications" class="hidden">
+          <h2><i class="fas fa-pills"></i> Мои лекарства</h2>
+          <div class="prescriptions-list"></div>
+        </section>
+
+        <!-- Секция Мои Записи -->
+        <section id="appointments" class="hidden">
+          <h2><i class="fas fa-calendar-check"></i> Мои Записи</h2>
+
+          <div class="appointments-header">
+            <button class="btn-appoint" id="openAppointmentModal">
+              <i class="fas fa-calendar-plus"></i> Записаться к врачу
+            </button>
+          </div>
+
+          <div class="appointments-sections">
+            <div class="appointments-section">
+              <h3><i class="fas fa-clock"></i> Предстоящие приемы</h3>
+              <div class="appointments-list" id="upcomingAppointments"></div>
+            </div>
+
+            <div class="appointments-section">
+              <h3><i class="fas fa-history"></i> Прошлые приемы</h3>
+              <div class="appointments-list" id="pastAppointments"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Секция Телемедицина -->
+        <section id="telemedicine" class="hidden">
+          <h2><i class="fas fa-comments"></i> Чат с врачом</h2>
+          <div class="chat-container">
+            <div class="chat-header">
+              <div class="doctor-info">
+                <div class="doctor-avatar">
+                  <i class="fas fa-user-md"></i>
                 </div>
-            </section>
-
-            <section id="prescriptions" class="hidden">
-                <h2><i class="fas fa-prescription-bottle"></i> Назначения</h2>
-                <div class="prescriptions-list"></div>
-            </section>
-
-            <section id="messages" class="hidden">
-                <h2><i class="fas fa-comments"></i> Сообщения</h2>
-                <div class="messages-container">
-                    <div class="messages-history"></div>
-                    <div class="message-input">
-                        <textarea placeholder="Введите сообщение..."></textarea>
-                        <button><i class="fas fa-paper-plane"></i></button>
-                    </div>
+                <div class="doctor-details">
+                  <h3>Др. Иванова Анна Петровна</h3>
+                  <span class="status online"
+                    ><i class="fas fa-circle"></i> Онлайн</span
+                  >
                 </div>
-            </section>
-        </main>
+              </div>
+            </div>
+
+            <div class="messages-history" id="messagesHistory">
+              <div class="message doctor">
+                <div class="message-content">
+                  <strong>Др. Иванова:</strong>
+                  <p>
+                    Добрый день! Как вы себя чувствуете после приема лекарств?
+                  </p>
+                </div>
+                <div class="message-time">10:00</div>
+              </div>
+              <div class="message patient">
+                <div class="message-content">
+                  <strong>Вы:</strong>
+                  <p>
+                    Здравствуйте! Самочувствие улучшилось, давление
+                    стабилизировалось.
+                  </p>
+                </div>
+                <div class="message-time">10:15</div>
+              </div>
+            </div>
+
+            <div class="message-input">
+              <textarea
+                id="messageText"
+                placeholder="Введите сообщение..."
+              ></textarea>
+              <button id="sendMessage">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
 
     <footer>
-        <p>© 2025 Медицинская платформа. Все права защищены</p>
+      <p>© 2025 Медицинская платформа Медисимо. Все права защищены</p>
     </footer>
 
-    <script src="https://emptyyyyyyy.github.io/IAS/src/scripts/patient-dashboard.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="patient-dashboard.js"></script>
+  </body>
 </html>
