@@ -1,11 +1,8 @@
 # 🏥 Информационно-аналитическая система для сопровождения пациентов
 
 **Веб-платформа для взаимодействия пациентов и врачей в лечебных учреждениях**
-
-[![Главная страница](https://img.shields.io/badge/Демо-Главная_страница-blue?style=for-the-badge)](https://emptyyyyyyy.github.io/IAS/src/html/index.html)  
-[![Страница врача](https://img.shields.io/badge/Демо-Панель_врача-success?style=for-the-badge)](https://emptyyyyyyy.github.io/IAS/src/html/doctor-dashboard.html)  
-[![Страница пациента](https://img.shields.io/badge/Демо-Панель_пациента-red?style=for-the-badge)](https://emptyyyyyyy.github.io/IAS/src/html/patient-dashboard.html)
-
+🔗 Живое Демо:
+🏠 Главная &bull; 🩺 Врач &bull; [👤 Пациент](https://emptyyyyyyy.github.io/IAS/src/html/patient-dashboard.html)
 ---
 
 ## 📋 Описание проекта
