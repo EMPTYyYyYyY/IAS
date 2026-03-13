@@ -1,8 +1,10 @@
 # 🏥 Информационно-аналитическая система для сопровождения пациентов
 
 **Веб-платформа для взаимодействия пациентов и врачей в лечебных учреждениях**
+---
+
 🔗 Живое Демо:
-🏠 Главная &bull; 🩺 Врач &bull; [👤 Пациент](https://emptyyyyyyy.github.io/IAS/src/html/patient-dashboard.html)
+[🏠 Главная](https://emptyyyyyyy.github.io/IAS/src/html/index.html) &bull; [🩺 Врач](https://emptyyyyyyy.github.io/IAS/src/html/doctor-dashboard.html) &bull; [👤 Пациент](https://emptyyyyyyy.github.io/IAS/src/html/patient-dashboard.html)
 ---
 
 ## 📋 Описание проекта
